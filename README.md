@@ -1,2 +1,2 @@
 # ece757-pim
-ECE 757 Clas Project
+ECE 757 Class Project

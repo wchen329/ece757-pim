@@ -2,6 +2,8 @@
 #define __UOP_H__
 #include <cstdint>
 
+#include "array.h"
+
 /* Micro-op ISA
  * Definitions
  *
@@ -22,9 +24,6 @@ namespace pim
 		CC_RR,
 		CC_RL
 	};
-
-	// Array Handle
-	typedef uint64_t h_Array;
 
 	/* Microop
 	 * A Microop contains a (1) opcode, (2) src1, (2) src2, and (3) dst handles

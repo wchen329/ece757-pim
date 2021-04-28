@@ -1,5 +1,7 @@
 #ifndef __UOPDECODER_H__
 #define __UOPDECODER_H__
+#include <queue>
+#include <list>
 #include "mop.h"
 #include "uop.h"
 
@@ -31,12 +33,13 @@ namespace pim
 			void setMacroop(Macroop mac_in) { this->mop_buffer = mac_in; }
 
 			/* Decompose
-			 * Get a list of micro-ops from a macro-op
+			 * Get a list of micro-ops from the macroop in the mop_buffer. This will also clear the macroop buffer.
 			 */
 			std::list<Microop> decompose();
 
 		private:
 			Macroop mop_buffer;
+			std::queue<Microop> uop_buffer; // Assume this is infinite length
 	};
 }
 

@@ -13,3 +13,4 @@ gem5/util
 *.o
 *.o.partial
 *.py.cc
+*.bm

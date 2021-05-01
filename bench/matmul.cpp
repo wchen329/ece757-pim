@@ -35,7 +35,7 @@
 
 void matmul(const int* A, const int* B, int* C, const unsigned int n)
 {
-	MMUL_GENERIC(i, j, k);	
+	MMUL_GENERIC(i, k, j);	
 }
 
 #endif
@@ -46,21 +46,28 @@ int main()
 {
 	// Make an array of ints
 	int n = FACTOR * 16;
-	int_Array ia(new int[n * n]);
-	int_Array ib(new int[n * n]);
-	int_Array oc(new int[n * n]);
+	int_Array ia(new int[n * n + CACHE_LINE_SIZE]);
+	int_Array ib(new int[n * n + CACHE_LINE_SIZE]);
+	int_Array oc(new int[n * n + CACHE_LINE_SIZE]);
+
+	// Find alignment
+	int* ia_aligned = findfirstaligned<int*>(ia.get());
+	int* ib_aligned = findfirstaligned<int*>(ib.get());
+	int* oc_aligned = findfirstaligned<int*>(oc.get());
 
 	// Fill 'er up with somewhat randoms
 	// NOTE: optimize rand gen for speed, not "uniformity"
 	for(int ind = 0; ind < (n * n); ++ind)
 	{
-		ia.get()[ind] = rand();
-		ib.get()[ind] = rand();
+		ia_aligned[ind] = rand() % 4;
+		ib_aligned[ind] = rand() % 4;
 	}
 
 	
-	matmul(ia.get(), ib.get(), oc.get(), n);
+	matmul(ia_aligned, ib_aligned, oc_aligned, n);
 
 	// Perform matmul.
 	std::cout << "MATMUL DONE." << std::endl;
+	std::cout << "First Entry: " << oc_aligned[0] << std::endl;
+
 }

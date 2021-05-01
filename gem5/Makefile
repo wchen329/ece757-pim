@@ -1,6 +1,6 @@
 # Makefile for PIM
 CFG=configs/example/se.py
-OPTS=--cmd=tests/test-progs/hello/bin/x86/linux/hello --cpu-type=MinorCPU --l1d_size=16384 --l1i_size=16384 --l2_size=1048576 --caches --l2cache
+OPTS=--cmd=../bench/matmul.bm --cpu-type=MinorCPU --l1d_size=16384 --l1i_size=16384 --l2_size=1048576 --caches --l2cache --cacheline_size=64
 
 .PHONY: build
 

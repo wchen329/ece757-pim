@@ -7,7 +7,13 @@
 
 namespace pim
 {
+	class PIM_Execution
+	{
+		public:
+			
+		private:
 
+	};
 }
 
 #endif

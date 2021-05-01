@@ -16,6 +16,16 @@ namespace pim
 	{
 		public:
 
+			const h_Array TMP_1 = 0xFFFFFF;
+			const h_Array TMP_2 = 0x1FFFFFF;
+			const h_Array TMP_3 = 0x2FFFFFF;
+			const h_Array TMP_4 = 0x4FFFFFF;
+			const h_Array TMP_5 = 0x5FFFFFF;
+			const h_Array TMP_6 = 0x6FFFFFF;
+			const h_Array TMP_7 = 0x7FFFFFF;
+			const h_Array TMP_8 = 0x8FFFFFF;
+			const h_Array TMP_9 = 0x9FFFFFF;
+
 			/* Microop_Decoder
 			 * Advance a cycle
 			 */

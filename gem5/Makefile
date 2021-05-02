@@ -1,12 +1,18 @@
 # Makefile for PIM
 CFG=configs/example/se.py
-OPTS=--cmd=../bench/matmul.bm --cpu-type=MinorCPU --l1d_size=16384 --l1i_size=16384 --l2_size=1048576 --caches --l2cache --cacheline_size=64
+BUILD_OPTS=CPU_MODELS=MinorCPU,AtomicSimpleCPU
+OPTS=--cmd=../bench/testpim.bm --cpu-type=MinorCPU --l1d_size=16384 --l1i_size=16384 --l2_size=1048576 --caches --l2cache --cacheline_size=64
 
-.PHONY: build
+.PHONY: build debug
 
-build:
-	scons -j$(GEM5_JOBS) build/X86/gem5.opt CPU_MODELS=MinorCPU,AtomicSimpleCPU
+opt:
+	scons -j$(GEM5_JOBS) build/X86/gem5.opt $(BUILD_OPTS)
+
+debug:
+	scons -j$(GEM5_JOBS) build/X86/gem5.debug $(BUILD_OPTS)
+
 run_debug:
-	build/X86/gem5.debug $(CFG) $(OPTS)
+	echo "run $(CFG) $(OPTS)" > gem5.gdb.in
+	gdb build/X86/gem5.debug -x gem5.gdb.in
 run_opt:
 	build/X86/gem5.opt $(CFG) $(OPTS)

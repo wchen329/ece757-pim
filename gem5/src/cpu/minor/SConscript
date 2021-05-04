@@ -56,6 +56,9 @@ if 'MinorCPU' in env['CPU_MODELS']:
     Source('pipeline.cc')
     Source('scoreboard.cc')
     Source('stats.cc')
+    Source('pimevent.cpp')
+    Source('uopdecoder.cpp')
+
 
     DebugFlag('MinorCPU', 'Minor CPU-level events')
     DebugFlag('MinorExecute', 'Minor Execute stage')

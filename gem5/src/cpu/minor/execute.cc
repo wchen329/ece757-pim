@@ -334,24 +334,6 @@ Execute::handleMemResponse(MinorDynInstPtr inst,
     bool is_atomic = inst->staticInst->isAtomic();
     bool is_prefetch = inst->staticInst->isDataPrefetch();
 
-    switch(response->request->getVaddr())
-    {
-	case ADDR_PIM_EXECUTE:
-		fprintf(stdout, "[PIM] Received execute request.\n");
-		return;
-	case ADDR_PIM_MACROOP:
-		fprintf(stdout, "[PIM] Setting macroop.\n");
-		return;
-	case ADDR_PIM_SRC1:
-		fprintf(stdout, "[PIM] Writing to src1 register\n");
-		return;
-	case ADDR_PIM_SRC2:
-		fprintf(stdout, "[PIM] Writing to src2 register\n");
-		return;
-	case ADDR_PIM_DST:
-		fprintf(stdout, "[PIM Writing to dst register\n");
-		return;
-    }
 
     /* If true, the trace's predicate value will be taken from the exec
      *  context predicate, otherwise, it will be set to false */
@@ -1161,8 +1143,45 @@ Execute::commit(ThreadID thread_id, bool only_commit_microops, bool discard,
 
                 lsq.popResponse(mem_response);
             } else {
-                handleMemResponse(inst, mem_response, branch, fault);
-                committed_inst = true;
+
+                    bool mmio_addr = false;
+
+        	    // Test for memory mapped PIM addresses
+		    switch(mem_response->request->getVaddr())
+		    {
+			case ADDR_PIM_EXECUTE:
+				fprintf(stdout, "[PIM] Received execute request.\n");
+				mmio_addr = true;
+				break;
+			case ADDR_PIM_MACROOP:
+				fprintf(stdout, "[PIM] Setting macroop.\n");
+				mmio_addr = true;
+				break;
+			case ADDR_PIM_SRC1:
+				fprintf(stdout, "[PIM] Writing to src1 register\n");
+				mmio_addr = true;
+				break;
+			case ADDR_PIM_SRC2:
+				fprintf(stdout, "[PIM] Writing to src2 register\n");
+				mmio_addr = true;
+				break;
+			case ADDR_PIM_DST:
+				fprintf(stdout, "[PIM Writing to dst register\n");
+				mmio_addr = true;
+				break;
+	    	    }
+
+		if(mmio_addr)
+		{
+			// Try discard
+			lsq.popResponse(mem_response);
+		}
+
+		else
+		{
+                    handleMemResponse(inst, mem_response, branch, fault);
+                    committed_inst = true;
+		}
             }
 
             completed_mem_ref = true;

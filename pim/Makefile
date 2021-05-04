@@ -1,2 +1,2 @@
 test:
-	g++ unittester.cpp uopdecoder.cpp -o unittester
+	g++ unittester.cpp pimevent.cpp -o unittester

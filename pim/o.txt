@@ -1,0 +1,611 @@
+g++ unittester.cpp -o unittester
+In file included from unittester.cpp:4:0:
+pimnoop.h:9:2: error: expected class-name before ‘{’ token
+  {
+  ^
+pimnoop.h: In constructor ‘pim::PimNoop::PimNoop()’:
+pimnoop.h:15:10: error: ‘class pim::PimNoop’ has no member named ‘set_cycle_time’
+    this->set_cycle_time(1);
+          ^~~~~~~~~~~~~~
+unittester.cpp: In function ‘int main()’:
+unittester.cpp:11:30: error: no matching function for call to ‘std::shared_ptr<pim::PimEvent>::shared_ptr(pim::PimNoop*)’
+  m_PimEvent mpn_1(new PimNoop); peq.insertEvent(mpn_1);
+                              ^
+In file included from /usr/include/c++/7/memory:81:0,
+                 from pimevent.h:4,
+                 from unittester.cpp:3:
+/usr/include/c++/7/bits/shared_ptr.h:352:7: note: candidate: std::shared_ptr<_Tp>::shared_ptr(const std::weak_ptr<_Tp>&, std::nothrow_t) [with _Tp = pim::PimEvent]
+       shared_ptr(const weak_ptr<_Tp>& __r, std::nothrow_t)
+       ^~~~~~~~~~
+/usr/include/c++/7/bits/shared_ptr.h:352:7: note:   candidate expects 2 arguments, 1 provided
+/usr/include/c++/7/bits/shared_ptr.h:342:2: note: candidate: template<class _Alloc, class ... _Args> std::shared_ptr<_Tp>::shared_ptr(std::_Sp_make_shared_tag, const _Alloc&, _Args&& ...)
+  shared_ptr(_Sp_make_shared_tag __tag, const _Alloc& __a,
+  ^~~~~~~~~~
+/usr/include/c++/7/bits/shared_ptr.h:342:2: note:   template argument deduction/substitution failed:
+unittester.cpp:11:30: note:   candidate expects at least 2 arguments, 1 provided
+  m_PimEvent mpn_1(new PimNoop); peq.insertEvent(mpn_1);
+                              ^
+In file included from /usr/include/c++/7/memory:81:0,
+                 from pimevent.h:4,
+                 from unittester.cpp:3:
+/usr/include/c++/7/bits/shared_ptr.h:294:17: note: candidate: constexpr std::shared_ptr<_Tp>::shared_ptr(std::nullptr_t) [with _Tp = pim::PimEvent; std::nullptr_t = std::nullptr_t]
+       constexpr shared_ptr(nullptr_t) noexcept : shared_ptr() { }
+                 ^~~~~~~~~~
+/usr/include/c++/7/bits/shared_ptr.h:294:17: note:   no known conversion for argument 1 from ‘pim::PimNoop*’ to ‘std::nullptr_t’
+/usr/include/c++/7/bits/shared_ptr.h:286:2: note: candidate: template<class _Yp, class _Del, std::shared_ptr<pim::PimEvent>::_Constructible<std::unique_ptr<_Tp, _Dp>, std::__sp_array_delete>* <anonymous> > std::shared_ptr<_Tp>::shared_ptr(std::unique_ptr<_Up, _Ep>&&)
+  shared_ptr(unique_ptr<_Yp, _Del>&& __r)
+  ^~~~~~~~~~
+/usr/include/c++/7/bits/shared_ptr.h:286:2: note:   template argument deduction/substitution failed:
+unittester.cpp:11:30: note:   mismatched types ‘std::unique_ptr<_Tp, _Dp>’ and ‘pim::PimNoop*’
+  m_PimEvent mpn_1(new PimNoop); peq.insertEvent(mpn_1);
+                              ^
+In file included from /usr/include/c++/7/memory:81:0,
+                 from pimevent.h:4,
+                 from unittester.cpp:3:
+/usr/include/c++/7/bits/shared_ptr.h:277:2: note: candidate: template<class _Yp, class _Del, class> std::shared_ptr<_Tp>::shared_ptr(std::unique_ptr<_Up, _Ep>&&)
+  shared_ptr(unique_ptr<_Yp, _Del>&& __r)
+  ^~~~~~~~~~
+/usr/include/c++/7/bits/shared_ptr.h:277:2: note:   template argument deduction/substitution failed:
+unittester.cpp:11:30: note:   mismatched types ‘std::unique_ptr<_Tp, _Dp>’ and ‘pim::PimNoop*’
+  m_PimEvent mpn_1(new PimNoop); peq.insertEvent(mpn_1);
+                              ^
+In file included from /usr/include/c++/7/memory:81:0,
+                 from pimevent.h:4,
+                 from unittester.cpp:3:
+/usr/include/c++/7/bits/shared_ptr.h:270:2: note: candidate: template<class _Yp, class> std::shared_ptr<_Tp>::shared_ptr(std::auto_ptr<_Up>&&)
+  shared_ptr(auto_ptr<_Yp>&& __r);
+  ^~~~~~~~~~
+/usr/include/c++/7/bits/shared_ptr.h:270:2: note:   template argument deduction/substitution failed:
+unittester.cpp:11:30: note:   mismatched types ‘std::auto_ptr<_Up>’ and ‘pim::PimNoop*’
+  m_PimEvent mpn_1(new PimNoop); peq.insertEvent(mpn_1);
+                              ^
+In file included from /usr/include/c++/7/memory:81:0,
+                 from pimevent.h:4,
+                 from unittester.cpp:3:
+/usr/include/c++/7/bits/shared_ptr.h:265:11: note: candidate: template<class _Yp, class> std::shared_ptr<_Tp>::shared_ptr(const std::weak_ptr<_Yp>&)
+  explicit shared_ptr(const weak_ptr<_Yp>& __r)
+           ^~~~~~~~~~
+/usr/include/c++/7/bits/shared_ptr.h:265:11: note:   template argument deduction/substitution failed:
+unittester.cpp:11:30: note:   mismatched types ‘const std::weak_ptr<_Tp>’ and ‘pim::PimNoop*’
+  m_PimEvent mpn_1(new PimNoop); peq.insertEvent(mpn_1);
+                              ^
+In file included from /usr/include/c++/7/memory:81:0,
+                 from pimevent.h:4,
+                 from unittester.cpp:3:
+/usr/include/c++/7/bits/shared_ptr.h:253:2: note: candidate: template<class _Yp, class> std::shared_ptr<_Tp>::shared_ptr(std::shared_ptr<_Yp>&&)
+  shared_ptr(shared_ptr<_Yp>&& __r) noexcept
+  ^~~~~~~~~~
+/usr/include/c++/7/bits/shared_ptr.h:253:2: note:   template argument deduction/substitution failed:
+unittester.cpp:11:30: note:   mismatched types ‘std::shared_ptr<_Tp>’ and ‘pim::PimNoop*’
+  m_PimEvent mpn_1(new PimNoop); peq.insertEvent(mpn_1);
+                              ^
+In file included from /usr/include/c++/7/memory:81:0,
+                 from pimevent.h:4,
+                 from unittester.cpp:3:
+/usr/include/c++/7/bits/shared_ptr.h:244:7: note: candidate: std::shared_ptr<_Tp>::shared_ptr(std::shared_ptr<_Tp>&&) [with _Tp = pim::PimEvent]
+       shared_ptr(shared_ptr&& __r) noexcept
+       ^~~~~~~~~~
+/usr/include/c++/7/bits/shared_ptr.h:244:7: note:   no known conversion for argument 1 from ‘pim::PimNoop*’ to ‘std::shared_ptr<pim::PimEvent>&&’
+/usr/include/c++/7/bits/shared_ptr.h:236:2: note: candidate: template<class _Yp, class> std::shared_ptr<_Tp>::shared_ptr(const std::shared_ptr<_Yp>&)
+  shared_ptr(const shared_ptr<_Yp>& __r) noexcept
+  ^~~~~~~~~~
+/usr/include/c++/7/bits/shared_ptr.h:236:2: note:   template argument deduction/substitution failed:
+unittester.cpp:11:30: note:   mismatched types ‘const std::shared_ptr<_Tp>’ and ‘pim::PimNoop*’
+  m_PimEvent mpn_1(new PimNoop); peq.insertEvent(mpn_1);
+                              ^
+In file included from /usr/include/c++/7/memory:81:0,
+                 from pimevent.h:4,
+                 from unittester.cpp:3:
+/usr/include/c++/7/bits/shared_ptr.h:224:2: note: candidate: template<class _Yp> std::shared_ptr<_Tp>::shared_ptr(const std::shared_ptr<_Yp>&, std::shared_ptr<_Tp>::element_type*)
+  shared_ptr(const shared_ptr<_Yp>& __r, element_type* __p) noexcept
+  ^~~~~~~~~~
+/usr/include/c++/7/bits/shared_ptr.h:224:2: note:   template argument deduction/substitution failed:
+unittester.cpp:11:30: note:   mismatched types ‘const std::shared_ptr<_Tp>’ and ‘pim::PimNoop*’
+  m_PimEvent mpn_1(new PimNoop); peq.insertEvent(mpn_1);
+                              ^
+In file included from /usr/include/c++/7/memory:81:0,
+                 from pimevent.h:4,
+                 from unittester.cpp:3:
+/usr/include/c++/7/bits/shared_ptr.h:202:2: note: candidate: template<class _Deleter, class _Alloc> std::shared_ptr<_Tp>::shared_ptr(std::nullptr_t, _Deleter, _Alloc)
+  shared_ptr(nullptr_t __p, _Deleter __d, _Alloc __a)
+  ^~~~~~~~~~
+/usr/include/c++/7/bits/shared_ptr.h:202:2: note:   template argument deduction/substitution failed:
+unittester.cpp:11:30: note:   candidate expects 3 arguments, 1 provided
+  m_PimEvent mpn_1(new PimNoop); peq.insertEvent(mpn_1);
+                              ^
+In file included from /usr/include/c++/7/memory:81:0,
+                 from pimevent.h:4,
+                 from unittester.cpp:3:
+/usr/include/c++/7/bits/shared_ptr.h:183:2: note: candidate: template<class _Yp, class _Deleter, class _Alloc, class> std::shared_ptr<_Tp>::shared_ptr(_Yp*, _Deleter, _Alloc)
+  shared_ptr(_Yp* __p, _Deleter __d, _Alloc __a)
+  ^~~~~~~~~~
+/usr/include/c++/7/bits/shared_ptr.h:183:2: note:   template argument deduction/substitution failed:
+unittester.cpp:11:30: note:   candidate expects 3 arguments, 1 provided
+  m_PimEvent mpn_1(new PimNoop); peq.insertEvent(mpn_1);
+                              ^
+In file included from /usr/include/c++/7/memory:81:0,
+                 from pimevent.h:4,
+                 from unittester.cpp:3:
+/usr/include/c++/7/bits/shared_ptr.h:163:2: note: candidate: template<class _Deleter> std::shared_ptr<_Tp>::shared_ptr(std::nullptr_t, _Deleter)
+  shared_ptr(nullptr_t __p, _Deleter __d)
+  ^~~~~~~~~~
+/usr/include/c++/7/bits/shared_ptr.h:163:2: note:   template argument deduction/substitution failed:
+unittester.cpp:11:30: note:   candidate expects 2 arguments, 1 provided
+  m_PimEvent mpn_1(new PimNoop); peq.insertEvent(mpn_1);
+                              ^
+In file included from /usr/include/c++/7/memory:81:0,
+                 from pimevent.h:4,
+                 from unittester.cpp:3:
+/usr/include/c++/7/bits/shared_ptr.h:146:2: note: candidate: template<class _Yp, class _Deleter, class> std::shared_ptr<_Tp>::shared_ptr(_Yp*, _Deleter)
+  shared_ptr(_Yp* __p, _Deleter __d)
+  ^~~~~~~~~~
+/usr/include/c++/7/bits/shared_ptr.h:146:2: note:   template argument deduction/substitution failed:
+unittester.cpp:11:30: note:   candidate expects 2 arguments, 1 provided
+  m_PimEvent mpn_1(new PimNoop); peq.insertEvent(mpn_1);
+                              ^
+In file included from /usr/include/c++/7/memory:81:0,
+                 from pimevent.h:4,
+                 from unittester.cpp:3:
+/usr/include/c++/7/bits/shared_ptr.h:129:2: note: candidate: template<class _Yp, class> std::shared_ptr<_Tp>::shared_ptr(_Yp*)
+  shared_ptr(_Yp* __p) : __shared_ptr<_Tp>(__p) { }
+  ^~~~~~~~~~
+/usr/include/c++/7/bits/shared_ptr.h:129:2: note:   template argument deduction/substitution failed:
+/usr/include/c++/7/bits/shared_ptr.h:119:7: note: candidate: std::shared_ptr<_Tp>::shared_ptr(const std::shared_ptr<_Tp>&) [with _Tp = pim::PimEvent]
+       shared_ptr(const shared_ptr&) noexcept = default;
+       ^~~~~~~~~~
+/usr/include/c++/7/bits/shared_ptr.h:119:7: note:   no known conversion for argument 1 from ‘pim::PimNoop*’ to ‘const std::shared_ptr<pim::PimEvent>&’
+/usr/include/c++/7/bits/shared_ptr.h:117:17: note: candidate: constexpr std::shared_ptr<_Tp>::shared_ptr() [with _Tp = pim::PimEvent]
+       constexpr shared_ptr() noexcept : __shared_ptr<_Tp>() { }
+                 ^~~~~~~~~~
+/usr/include/c++/7/bits/shared_ptr.h:117:17: note:   candidate expects 0 arguments, 1 provided
+unittester.cpp:12:30: error: no matching function for call to ‘std::shared_ptr<pim::PimEvent>::shared_ptr(pim::PimNoop*)’
+  m_PimEvent mpn_2(new PimNoop); peq.insertEvent(mpn_2);
+                              ^
+In file included from /usr/include/c++/7/memory:81:0,
+                 from pimevent.h:4,
+                 from unittester.cpp:3:
+/usr/include/c++/7/bits/shared_ptr.h:352:7: note: candidate: std::shared_ptr<_Tp>::shared_ptr(const std::weak_ptr<_Tp>&, std::nothrow_t) [with _Tp = pim::PimEvent]
+       shared_ptr(const weak_ptr<_Tp>& __r, std::nothrow_t)
+       ^~~~~~~~~~
+/usr/include/c++/7/bits/shared_ptr.h:352:7: note:   candidate expects 2 arguments, 1 provided
+/usr/include/c++/7/bits/shared_ptr.h:342:2: note: candidate: template<class _Alloc, class ... _Args> std::shared_ptr<_Tp>::shared_ptr(std::_Sp_make_shared_tag, const _Alloc&, _Args&& ...)
+  shared_ptr(_Sp_make_shared_tag __tag, const _Alloc& __a,
+  ^~~~~~~~~~
+/usr/include/c++/7/bits/shared_ptr.h:342:2: note:   template argument deduction/substitution failed:
+unittester.cpp:12:30: note:   candidate expects at least 2 arguments, 1 provided
+  m_PimEvent mpn_2(new PimNoop); peq.insertEvent(mpn_2);
+                              ^
+In file included from /usr/include/c++/7/memory:81:0,
+                 from pimevent.h:4,
+                 from unittester.cpp:3:
+/usr/include/c++/7/bits/shared_ptr.h:294:17: note: candidate: constexpr std::shared_ptr<_Tp>::shared_ptr(std::nullptr_t) [with _Tp = pim::PimEvent; std::nullptr_t = std::nullptr_t]
+       constexpr shared_ptr(nullptr_t) noexcept : shared_ptr() { }
+                 ^~~~~~~~~~
+/usr/include/c++/7/bits/shared_ptr.h:294:17: note:   no known conversion for argument 1 from ‘pim::PimNoop*’ to ‘std::nullptr_t’
+/usr/include/c++/7/bits/shared_ptr.h:286:2: note: candidate: template<class _Yp, class _Del, std::shared_ptr<pim::PimEvent>::_Constructible<std::unique_ptr<_Tp, _Dp>, std::__sp_array_delete>* <anonymous> > std::shared_ptr<_Tp>::shared_ptr(std::unique_ptr<_Up, _Ep>&&)
+  shared_ptr(unique_ptr<_Yp, _Del>&& __r)
+  ^~~~~~~~~~
+/usr/include/c++/7/bits/shared_ptr.h:286:2: note:   template argument deduction/substitution failed:
+unittester.cpp:12:30: note:   mismatched types ‘std::unique_ptr<_Tp, _Dp>’ and ‘pim::PimNoop*’
+  m_PimEvent mpn_2(new PimNoop); peq.insertEvent(mpn_2);
+                              ^
+In file included from /usr/include/c++/7/memory:81:0,
+                 from pimevent.h:4,
+                 from unittester.cpp:3:
+/usr/include/c++/7/bits/shared_ptr.h:277:2: note: candidate: template<class _Yp, class _Del, class> std::shared_ptr<_Tp>::shared_ptr(std::unique_ptr<_Up, _Ep>&&)
+  shared_ptr(unique_ptr<_Yp, _Del>&& __r)
+  ^~~~~~~~~~
+/usr/include/c++/7/bits/shared_ptr.h:277:2: note:   template argument deduction/substitution failed:
+unittester.cpp:12:30: note:   mismatched types ‘std::unique_ptr<_Tp, _Dp>’ and ‘pim::PimNoop*’
+  m_PimEvent mpn_2(new PimNoop); peq.insertEvent(mpn_2);
+                              ^
+In file included from /usr/include/c++/7/memory:81:0,
+                 from pimevent.h:4,
+                 from unittester.cpp:3:
+/usr/include/c++/7/bits/shared_ptr.h:270:2: note: candidate: template<class _Yp, class> std::shared_ptr<_Tp>::shared_ptr(std::auto_ptr<_Up>&&)
+  shared_ptr(auto_ptr<_Yp>&& __r);
+  ^~~~~~~~~~
+/usr/include/c++/7/bits/shared_ptr.h:270:2: note:   template argument deduction/substitution failed:
+unittester.cpp:12:30: note:   mismatched types ‘std::auto_ptr<_Up>’ and ‘pim::PimNoop*’
+  m_PimEvent mpn_2(new PimNoop); peq.insertEvent(mpn_2);
+                              ^
+In file included from /usr/include/c++/7/memory:81:0,
+                 from pimevent.h:4,
+                 from unittester.cpp:3:
+/usr/include/c++/7/bits/shared_ptr.h:265:11: note: candidate: template<class _Yp, class> std::shared_ptr<_Tp>::shared_ptr(const std::weak_ptr<_Yp>&)
+  explicit shared_ptr(const weak_ptr<_Yp>& __r)
+           ^~~~~~~~~~
+/usr/include/c++/7/bits/shared_ptr.h:265:11: note:   template argument deduction/substitution failed:
+unittester.cpp:12:30: note:   mismatched types ‘const std::weak_ptr<_Tp>’ and ‘pim::PimNoop*’
+  m_PimEvent mpn_2(new PimNoop); peq.insertEvent(mpn_2);
+                              ^
+In file included from /usr/include/c++/7/memory:81:0,
+                 from pimevent.h:4,
+                 from unittester.cpp:3:
+/usr/include/c++/7/bits/shared_ptr.h:253:2: note: candidate: template<class _Yp, class> std::shared_ptr<_Tp>::shared_ptr(std::shared_ptr<_Yp>&&)
+  shared_ptr(shared_ptr<_Yp>&& __r) noexcept
+  ^~~~~~~~~~
+/usr/include/c++/7/bits/shared_ptr.h:253:2: note:   template argument deduction/substitution failed:
+unittester.cpp:12:30: note:   mismatched types ‘std::shared_ptr<_Tp>’ and ‘pim::PimNoop*’
+  m_PimEvent mpn_2(new PimNoop); peq.insertEvent(mpn_2);
+                              ^
+In file included from /usr/include/c++/7/memory:81:0,
+                 from pimevent.h:4,
+                 from unittester.cpp:3:
+/usr/include/c++/7/bits/shared_ptr.h:244:7: note: candidate: std::shared_ptr<_Tp>::shared_ptr(std::shared_ptr<_Tp>&&) [with _Tp = pim::PimEvent]
+       shared_ptr(shared_ptr&& __r) noexcept
+       ^~~~~~~~~~
+/usr/include/c++/7/bits/shared_ptr.h:244:7: note:   no known conversion for argument 1 from ‘pim::PimNoop*’ to ‘std::shared_ptr<pim::PimEvent>&&’
+/usr/include/c++/7/bits/shared_ptr.h:236:2: note: candidate: template<class _Yp, class> std::shared_ptr<_Tp>::shared_ptr(const std::shared_ptr<_Yp>&)
+  shared_ptr(const shared_ptr<_Yp>& __r) noexcept
+  ^~~~~~~~~~
+/usr/include/c++/7/bits/shared_ptr.h:236:2: note:   template argument deduction/substitution failed:
+unittester.cpp:12:30: note:   mismatched types ‘const std::shared_ptr<_Tp>’ and ‘pim::PimNoop*’
+  m_PimEvent mpn_2(new PimNoop); peq.insertEvent(mpn_2);
+                              ^
+In file included from /usr/include/c++/7/memory:81:0,
+                 from pimevent.h:4,
+                 from unittester.cpp:3:
+/usr/include/c++/7/bits/shared_ptr.h:224:2: note: candidate: template<class _Yp> std::shared_ptr<_Tp>::shared_ptr(const std::shared_ptr<_Yp>&, std::shared_ptr<_Tp>::element_type*)
+  shared_ptr(const shared_ptr<_Yp>& __r, element_type* __p) noexcept
+  ^~~~~~~~~~
+/usr/include/c++/7/bits/shared_ptr.h:224:2: note:   template argument deduction/substitution failed:
+unittester.cpp:12:30: note:   mismatched types ‘const std::shared_ptr<_Tp>’ and ‘pim::PimNoop*’
+  m_PimEvent mpn_2(new PimNoop); peq.insertEvent(mpn_2);
+                              ^
+In file included from /usr/include/c++/7/memory:81:0,
+                 from pimevent.h:4,
+                 from unittester.cpp:3:
+/usr/include/c++/7/bits/shared_ptr.h:202:2: note: candidate: template<class _Deleter, class _Alloc> std::shared_ptr<_Tp>::shared_ptr(std::nullptr_t, _Deleter, _Alloc)
+  shared_ptr(nullptr_t __p, _Deleter __d, _Alloc __a)
+  ^~~~~~~~~~
+/usr/include/c++/7/bits/shared_ptr.h:202:2: note:   template argument deduction/substitution failed:
+unittester.cpp:12:30: note:   candidate expects 3 arguments, 1 provided
+  m_PimEvent mpn_2(new PimNoop); peq.insertEvent(mpn_2);
+                              ^
+In file included from /usr/include/c++/7/memory:81:0,
+                 from pimevent.h:4,
+                 from unittester.cpp:3:
+/usr/include/c++/7/bits/shared_ptr.h:183:2: note: candidate: template<class _Yp, class _Deleter, class _Alloc, class> std::shared_ptr<_Tp>::shared_ptr(_Yp*, _Deleter, _Alloc)
+  shared_ptr(_Yp* __p, _Deleter __d, _Alloc __a)
+  ^~~~~~~~~~
+/usr/include/c++/7/bits/shared_ptr.h:183:2: note:   template argument deduction/substitution failed:
+unittester.cpp:12:30: note:   candidate expects 3 arguments, 1 provided
+  m_PimEvent mpn_2(new PimNoop); peq.insertEvent(mpn_2);
+                              ^
+In file included from /usr/include/c++/7/memory:81:0,
+                 from pimevent.h:4,
+                 from unittester.cpp:3:
+/usr/include/c++/7/bits/shared_ptr.h:163:2: note: candidate: template<class _Deleter> std::shared_ptr<_Tp>::shared_ptr(std::nullptr_t, _Deleter)
+  shared_ptr(nullptr_t __p, _Deleter __d)
+  ^~~~~~~~~~
+/usr/include/c++/7/bits/shared_ptr.h:163:2: note:   template argument deduction/substitution failed:
+unittester.cpp:12:30: note:   candidate expects 2 arguments, 1 provided
+  m_PimEvent mpn_2(new PimNoop); peq.insertEvent(mpn_2);
+                              ^
+In file included from /usr/include/c++/7/memory:81:0,
+                 from pimevent.h:4,
+                 from unittester.cpp:3:
+/usr/include/c++/7/bits/shared_ptr.h:146:2: note: candidate: template<class _Yp, class _Deleter, class> std::shared_ptr<_Tp>::shared_ptr(_Yp*, _Deleter)
+  shared_ptr(_Yp* __p, _Deleter __d)
+  ^~~~~~~~~~
+/usr/include/c++/7/bits/shared_ptr.h:146:2: note:   template argument deduction/substitution failed:
+unittester.cpp:12:30: note:   candidate expects 2 arguments, 1 provided
+  m_PimEvent mpn_2(new PimNoop); peq.insertEvent(mpn_2);
+                              ^
+In file included from /usr/include/c++/7/memory:81:0,
+                 from pimevent.h:4,
+                 from unittester.cpp:3:
+/usr/include/c++/7/bits/shared_ptr.h:129:2: note: candidate: template<class _Yp, class> std::shared_ptr<_Tp>::shared_ptr(_Yp*)
+  shared_ptr(_Yp* __p) : __shared_ptr<_Tp>(__p) { }
+  ^~~~~~~~~~
+/usr/include/c++/7/bits/shared_ptr.h:129:2: note:   template argument deduction/substitution failed:
+/usr/include/c++/7/bits/shared_ptr.h:119:7: note: candidate: std::shared_ptr<_Tp>::shared_ptr(const std::shared_ptr<_Tp>&) [with _Tp = pim::PimEvent]
+       shared_ptr(const shared_ptr&) noexcept = default;
+       ^~~~~~~~~~
+/usr/include/c++/7/bits/shared_ptr.h:119:7: note:   no known conversion for argument 1 from ‘pim::PimNoop*’ to ‘const std::shared_ptr<pim::PimEvent>&’
+/usr/include/c++/7/bits/shared_ptr.h:117:17: note: candidate: constexpr std::shared_ptr<_Tp>::shared_ptr() [with _Tp = pim::PimEvent]
+       constexpr shared_ptr() noexcept : __shared_ptr<_Tp>() { }
+                 ^~~~~~~~~~
+/usr/include/c++/7/bits/shared_ptr.h:117:17: note:   candidate expects 0 arguments, 1 provided
+unittester.cpp:14:30: error: no matching function for call to ‘std::shared_ptr<pim::PimEvent>::shared_ptr(pim::PimNoop*)’
+  m_PimEvent mpn_3(new PimNoop); peq.insertEvent(mpn_3);
+                              ^
+In file included from /usr/include/c++/7/memory:81:0,
+                 from pimevent.h:4,
+                 from unittester.cpp:3:
+/usr/include/c++/7/bits/shared_ptr.h:352:7: note: candidate: std::shared_ptr<_Tp>::shared_ptr(const std::weak_ptr<_Tp>&, std::nothrow_t) [with _Tp = pim::PimEvent]
+       shared_ptr(const weak_ptr<_Tp>& __r, std::nothrow_t)
+       ^~~~~~~~~~
+/usr/include/c++/7/bits/shared_ptr.h:352:7: note:   candidate expects 2 arguments, 1 provided
+/usr/include/c++/7/bits/shared_ptr.h:342:2: note: candidate: template<class _Alloc, class ... _Args> std::shared_ptr<_Tp>::shared_ptr(std::_Sp_make_shared_tag, const _Alloc&, _Args&& ...)
+  shared_ptr(_Sp_make_shared_tag __tag, const _Alloc& __a,
+  ^~~~~~~~~~
+/usr/include/c++/7/bits/shared_ptr.h:342:2: note:   template argument deduction/substitution failed:
+unittester.cpp:14:30: note:   candidate expects at least 2 arguments, 1 provided
+  m_PimEvent mpn_3(new PimNoop); peq.insertEvent(mpn_3);
+                              ^
+In file included from /usr/include/c++/7/memory:81:0,
+                 from pimevent.h:4,
+                 from unittester.cpp:3:
+/usr/include/c++/7/bits/shared_ptr.h:294:17: note: candidate: constexpr std::shared_ptr<_Tp>::shared_ptr(std::nullptr_t) [with _Tp = pim::PimEvent; std::nullptr_t = std::nullptr_t]
+       constexpr shared_ptr(nullptr_t) noexcept : shared_ptr() { }
+                 ^~~~~~~~~~
+/usr/include/c++/7/bits/shared_ptr.h:294:17: note:   no known conversion for argument 1 from ‘pim::PimNoop*’ to ‘std::nullptr_t’
+/usr/include/c++/7/bits/shared_ptr.h:286:2: note: candidate: template<class _Yp, class _Del, std::shared_ptr<pim::PimEvent>::_Constructible<std::unique_ptr<_Tp, _Dp>, std::__sp_array_delete>* <anonymous> > std::shared_ptr<_Tp>::shared_ptr(std::unique_ptr<_Up, _Ep>&&)
+  shared_ptr(unique_ptr<_Yp, _Del>&& __r)
+  ^~~~~~~~~~
+/usr/include/c++/7/bits/shared_ptr.h:286:2: note:   template argument deduction/substitution failed:
+unittester.cpp:14:30: note:   mismatched types ‘std::unique_ptr<_Tp, _Dp>’ and ‘pim::PimNoop*’
+  m_PimEvent mpn_3(new PimNoop); peq.insertEvent(mpn_3);
+                              ^
+In file included from /usr/include/c++/7/memory:81:0,
+                 from pimevent.h:4,
+                 from unittester.cpp:3:
+/usr/include/c++/7/bits/shared_ptr.h:277:2: note: candidate: template<class _Yp, class _Del, class> std::shared_ptr<_Tp>::shared_ptr(std::unique_ptr<_Up, _Ep>&&)
+  shared_ptr(unique_ptr<_Yp, _Del>&& __r)
+  ^~~~~~~~~~
+/usr/include/c++/7/bits/shared_ptr.h:277:2: note:   template argument deduction/substitution failed:
+unittester.cpp:14:30: note:   mismatched types ‘std::unique_ptr<_Tp, _Dp>’ and ‘pim::PimNoop*’
+  m_PimEvent mpn_3(new PimNoop); peq.insertEvent(mpn_3);
+                              ^
+In file included from /usr/include/c++/7/memory:81:0,
+                 from pimevent.h:4,
+                 from unittester.cpp:3:
+/usr/include/c++/7/bits/shared_ptr.h:270:2: note: candidate: template<class _Yp, class> std::shared_ptr<_Tp>::shared_ptr(std::auto_ptr<_Up>&&)
+  shared_ptr(auto_ptr<_Yp>&& __r);
+  ^~~~~~~~~~
+/usr/include/c++/7/bits/shared_ptr.h:270:2: note:   template argument deduction/substitution failed:
+unittester.cpp:14:30: note:   mismatched types ‘std::auto_ptr<_Up>’ and ‘pim::PimNoop*’
+  m_PimEvent mpn_3(new PimNoop); peq.insertEvent(mpn_3);
+                              ^
+In file included from /usr/include/c++/7/memory:81:0,
+                 from pimevent.h:4,
+                 from unittester.cpp:3:
+/usr/include/c++/7/bits/shared_ptr.h:265:11: note: candidate: template<class _Yp, class> std::shared_ptr<_Tp>::shared_ptr(const std::weak_ptr<_Yp>&)
+  explicit shared_ptr(const weak_ptr<_Yp>& __r)
+           ^~~~~~~~~~
+/usr/include/c++/7/bits/shared_ptr.h:265:11: note:   template argument deduction/substitution failed:
+unittester.cpp:14:30: note:   mismatched types ‘const std::weak_ptr<_Tp>’ and ‘pim::PimNoop*’
+  m_PimEvent mpn_3(new PimNoop); peq.insertEvent(mpn_3);
+                              ^
+In file included from /usr/include/c++/7/memory:81:0,
+                 from pimevent.h:4,
+                 from unittester.cpp:3:
+/usr/include/c++/7/bits/shared_ptr.h:253:2: note: candidate: template<class _Yp, class> std::shared_ptr<_Tp>::shared_ptr(std::shared_ptr<_Yp>&&)
+  shared_ptr(shared_ptr<_Yp>&& __r) noexcept
+  ^~~~~~~~~~
+/usr/include/c++/7/bits/shared_ptr.h:253:2: note:   template argument deduction/substitution failed:
+unittester.cpp:14:30: note:   mismatched types ‘std::shared_ptr<_Tp>’ and ‘pim::PimNoop*’
+  m_PimEvent mpn_3(new PimNoop); peq.insertEvent(mpn_3);
+                              ^
+In file included from /usr/include/c++/7/memory:81:0,
+                 from pimevent.h:4,
+                 from unittester.cpp:3:
+/usr/include/c++/7/bits/shared_ptr.h:244:7: note: candidate: std::shared_ptr<_Tp>::shared_ptr(std::shared_ptr<_Tp>&&) [with _Tp = pim::PimEvent]
+       shared_ptr(shared_ptr&& __r) noexcept
+       ^~~~~~~~~~
+/usr/include/c++/7/bits/shared_ptr.h:244:7: note:   no known conversion for argument 1 from ‘pim::PimNoop*’ to ‘std::shared_ptr<pim::PimEvent>&&’
+/usr/include/c++/7/bits/shared_ptr.h:236:2: note: candidate: template<class _Yp, class> std::shared_ptr<_Tp>::shared_ptr(const std::shared_ptr<_Yp>&)
+  shared_ptr(const shared_ptr<_Yp>& __r) noexcept
+  ^~~~~~~~~~
+/usr/include/c++/7/bits/shared_ptr.h:236:2: note:   template argument deduction/substitution failed:
+unittester.cpp:14:30: note:   mismatched types ‘const std::shared_ptr<_Tp>’ and ‘pim::PimNoop*’
+  m_PimEvent mpn_3(new PimNoop); peq.insertEvent(mpn_3);
+                              ^
+In file included from /usr/include/c++/7/memory:81:0,
+                 from pimevent.h:4,
+                 from unittester.cpp:3:
+/usr/include/c++/7/bits/shared_ptr.h:224:2: note: candidate: template<class _Yp> std::shared_ptr<_Tp>::shared_ptr(const std::shared_ptr<_Yp>&, std::shared_ptr<_Tp>::element_type*)
+  shared_ptr(const shared_ptr<_Yp>& __r, element_type* __p) noexcept
+  ^~~~~~~~~~
+/usr/include/c++/7/bits/shared_ptr.h:224:2: note:   template argument deduction/substitution failed:
+unittester.cpp:14:30: note:   mismatched types ‘const std::shared_ptr<_Tp>’ and ‘pim::PimNoop*’
+  m_PimEvent mpn_3(new PimNoop); peq.insertEvent(mpn_3);
+                              ^
+In file included from /usr/include/c++/7/memory:81:0,
+                 from pimevent.h:4,
+                 from unittester.cpp:3:
+/usr/include/c++/7/bits/shared_ptr.h:202:2: note: candidate: template<class _Deleter, class _Alloc> std::shared_ptr<_Tp>::shared_ptr(std::nullptr_t, _Deleter, _Alloc)
+  shared_ptr(nullptr_t __p, _Deleter __d, _Alloc __a)
+  ^~~~~~~~~~
+/usr/include/c++/7/bits/shared_ptr.h:202:2: note:   template argument deduction/substitution failed:
+unittester.cpp:14:30: note:   candidate expects 3 arguments, 1 provided
+  m_PimEvent mpn_3(new PimNoop); peq.insertEvent(mpn_3);
+                              ^
+In file included from /usr/include/c++/7/memory:81:0,
+                 from pimevent.h:4,
+                 from unittester.cpp:3:
+/usr/include/c++/7/bits/shared_ptr.h:183:2: note: candidate: template<class _Yp, class _Deleter, class _Alloc, class> std::shared_ptr<_Tp>::shared_ptr(_Yp*, _Deleter, _Alloc)
+  shared_ptr(_Yp* __p, _Deleter __d, _Alloc __a)
+  ^~~~~~~~~~
+/usr/include/c++/7/bits/shared_ptr.h:183:2: note:   template argument deduction/substitution failed:
+unittester.cpp:14:30: note:   candidate expects 3 arguments, 1 provided
+  m_PimEvent mpn_3(new PimNoop); peq.insertEvent(mpn_3);
+                              ^
+In file included from /usr/include/c++/7/memory:81:0,
+                 from pimevent.h:4,
+                 from unittester.cpp:3:
+/usr/include/c++/7/bits/shared_ptr.h:163:2: note: candidate: template<class _Deleter> std::shared_ptr<_Tp>::shared_ptr(std::nullptr_t, _Deleter)
+  shared_ptr(nullptr_t __p, _Deleter __d)
+  ^~~~~~~~~~
+/usr/include/c++/7/bits/shared_ptr.h:163:2: note:   template argument deduction/substitution failed:
+unittester.cpp:14:30: note:   candidate expects 2 arguments, 1 provided
+  m_PimEvent mpn_3(new PimNoop); peq.insertEvent(mpn_3);
+                              ^
+In file included from /usr/include/c++/7/memory:81:0,
+                 from pimevent.h:4,
+                 from unittester.cpp:3:
+/usr/include/c++/7/bits/shared_ptr.h:146:2: note: candidate: template<class _Yp, class _Deleter, class> std::shared_ptr<_Tp>::shared_ptr(_Yp*, _Deleter)
+  shared_ptr(_Yp* __p, _Deleter __d)
+  ^~~~~~~~~~
+/usr/include/c++/7/bits/shared_ptr.h:146:2: note:   template argument deduction/substitution failed:
+unittester.cpp:14:30: note:   candidate expects 2 arguments, 1 provided
+  m_PimEvent mpn_3(new PimNoop); peq.insertEvent(mpn_3);
+                              ^
+In file included from /usr/include/c++/7/memory:81:0,
+                 from pimevent.h:4,
+                 from unittester.cpp:3:
+/usr/include/c++/7/bits/shared_ptr.h:129:2: note: candidate: template<class _Yp, class> std::shared_ptr<_Tp>::shared_ptr(_Yp*)
+  shared_ptr(_Yp* __p) : __shared_ptr<_Tp>(__p) { }
+  ^~~~~~~~~~
+/usr/include/c++/7/bits/shared_ptr.h:129:2: note:   template argument deduction/substitution failed:
+/usr/include/c++/7/bits/shared_ptr.h:119:7: note: candidate: std::shared_ptr<_Tp>::shared_ptr(const std::shared_ptr<_Tp>&) [with _Tp = pim::PimEvent]
+       shared_ptr(const shared_ptr&) noexcept = default;
+       ^~~~~~~~~~
+/usr/include/c++/7/bits/shared_ptr.h:119:7: note:   no known conversion for argument 1 from ‘pim::PimNoop*’ to ‘const std::shared_ptr<pim::PimEvent>&’
+/usr/include/c++/7/bits/shared_ptr.h:117:17: note: candidate: constexpr std::shared_ptr<_Tp>::shared_ptr() [with _Tp = pim::PimEvent]
+       constexpr shared_ptr() noexcept : __shared_ptr<_Tp>() { }
+                 ^~~~~~~~~~
+/usr/include/c++/7/bits/shared_ptr.h:117:17: note:   candidate expects 0 arguments, 1 provided
+unittester.cpp:16:30: error: no matching function for call to ‘std::shared_ptr<pim::PimEvent>::shared_ptr(pim::PimNoop*)’
+  m_PimEvent mpn_4(new PimNoop); peq.insertEvent(mpn_4);
+                              ^
+In file included from /usr/include/c++/7/memory:81:0,
+                 from pimevent.h:4,
+                 from unittester.cpp:3:
+/usr/include/c++/7/bits/shared_ptr.h:352:7: note: candidate: std::shared_ptr<_Tp>::shared_ptr(const std::weak_ptr<_Tp>&, std::nothrow_t) [with _Tp = pim::PimEvent]
+       shared_ptr(const weak_ptr<_Tp>& __r, std::nothrow_t)
+       ^~~~~~~~~~
+/usr/include/c++/7/bits/shared_ptr.h:352:7: note:   candidate expects 2 arguments, 1 provided
+/usr/include/c++/7/bits/shared_ptr.h:342:2: note: candidate: template<class _Alloc, class ... _Args> std::shared_ptr<_Tp>::shared_ptr(std::_Sp_make_shared_tag, const _Alloc&, _Args&& ...)
+  shared_ptr(_Sp_make_shared_tag __tag, const _Alloc& __a,
+  ^~~~~~~~~~
+/usr/include/c++/7/bits/shared_ptr.h:342:2: note:   template argument deduction/substitution failed:
+unittester.cpp:16:30: note:   candidate expects at least 2 arguments, 1 provided
+  m_PimEvent mpn_4(new PimNoop); peq.insertEvent(mpn_4);
+                              ^
+In file included from /usr/include/c++/7/memory:81:0,
+                 from pimevent.h:4,
+                 from unittester.cpp:3:
+/usr/include/c++/7/bits/shared_ptr.h:294:17: note: candidate: constexpr std::shared_ptr<_Tp>::shared_ptr(std::nullptr_t) [with _Tp = pim::PimEvent; std::nullptr_t = std::nullptr_t]
+       constexpr shared_ptr(nullptr_t) noexcept : shared_ptr() { }
+                 ^~~~~~~~~~
+/usr/include/c++/7/bits/shared_ptr.h:294:17: note:   no known conversion for argument 1 from ‘pim::PimNoop*’ to ‘std::nullptr_t’
+/usr/include/c++/7/bits/shared_ptr.h:286:2: note: candidate: template<class _Yp, class _Del, std::shared_ptr<pim::PimEvent>::_Constructible<std::unique_ptr<_Tp, _Dp>, std::__sp_array_delete>* <anonymous> > std::shared_ptr<_Tp>::shared_ptr(std::unique_ptr<_Up, _Ep>&&)
+  shared_ptr(unique_ptr<_Yp, _Del>&& __r)
+  ^~~~~~~~~~
+/usr/include/c++/7/bits/shared_ptr.h:286:2: note:   template argument deduction/substitution failed:
+unittester.cpp:16:30: note:   mismatched types ‘std::unique_ptr<_Tp, _Dp>’ and ‘pim::PimNoop*’
+  m_PimEvent mpn_4(new PimNoop); peq.insertEvent(mpn_4);
+                              ^
+In file included from /usr/include/c++/7/memory:81:0,
+                 from pimevent.h:4,
+                 from unittester.cpp:3:
+/usr/include/c++/7/bits/shared_ptr.h:277:2: note: candidate: template<class _Yp, class _Del, class> std::shared_ptr<_Tp>::shared_ptr(std::unique_ptr<_Up, _Ep>&&)
+  shared_ptr(unique_ptr<_Yp, _Del>&& __r)
+  ^~~~~~~~~~
+/usr/include/c++/7/bits/shared_ptr.h:277:2: note:   template argument deduction/substitution failed:
+unittester.cpp:16:30: note:   mismatched types ‘std::unique_ptr<_Tp, _Dp>’ and ‘pim::PimNoop*’
+  m_PimEvent mpn_4(new PimNoop); peq.insertEvent(mpn_4);
+                              ^
+In file included from /usr/include/c++/7/memory:81:0,
+                 from pimevent.h:4,
+                 from unittester.cpp:3:
+/usr/include/c++/7/bits/shared_ptr.h:270:2: note: candidate: template<class _Yp, class> std::shared_ptr<_Tp>::shared_ptr(std::auto_ptr<_Up>&&)
+  shared_ptr(auto_ptr<_Yp>&& __r);
+  ^~~~~~~~~~
+/usr/include/c++/7/bits/shared_ptr.h:270:2: note:   template argument deduction/substitution failed:
+unittester.cpp:16:30: note:   mismatched types ‘std::auto_ptr<_Up>’ and ‘pim::PimNoop*’
+  m_PimEvent mpn_4(new PimNoop); peq.insertEvent(mpn_4);
+                              ^
+In file included from /usr/include/c++/7/memory:81:0,
+                 from pimevent.h:4,
+                 from unittester.cpp:3:
+/usr/include/c++/7/bits/shared_ptr.h:265:11: note: candidate: template<class _Yp, class> std::shared_ptr<_Tp>::shared_ptr(const std::weak_ptr<_Yp>&)
+  explicit shared_ptr(const weak_ptr<_Yp>& __r)
+           ^~~~~~~~~~
+/usr/include/c++/7/bits/shared_ptr.h:265:11: note:   template argument deduction/substitution failed:
+unittester.cpp:16:30: note:   mismatched types ‘const std::weak_ptr<_Tp>’ and ‘pim::PimNoop*’
+  m_PimEvent mpn_4(new PimNoop); peq.insertEvent(mpn_4);
+                              ^
+In file included from /usr/include/c++/7/memory:81:0,
+                 from pimevent.h:4,
+                 from unittester.cpp:3:
+/usr/include/c++/7/bits/shared_ptr.h:253:2: note: candidate: template<class _Yp, class> std::shared_ptr<_Tp>::shared_ptr(std::shared_ptr<_Yp>&&)
+  shared_ptr(shared_ptr<_Yp>&& __r) noexcept
+  ^~~~~~~~~~
+/usr/include/c++/7/bits/shared_ptr.h:253:2: note:   template argument deduction/substitution failed:
+unittester.cpp:16:30: note:   mismatched types ‘std::shared_ptr<_Tp>’ and ‘pim::PimNoop*’
+  m_PimEvent mpn_4(new PimNoop); peq.insertEvent(mpn_4);
+                              ^
+In file included from /usr/include/c++/7/memory:81:0,
+                 from pimevent.h:4,
+                 from unittester.cpp:3:
+/usr/include/c++/7/bits/shared_ptr.h:244:7: note: candidate: std::shared_ptr<_Tp>::shared_ptr(std::shared_ptr<_Tp>&&) [with _Tp = pim::PimEvent]
+       shared_ptr(shared_ptr&& __r) noexcept
+       ^~~~~~~~~~
+/usr/include/c++/7/bits/shared_ptr.h:244:7: note:   no known conversion for argument 1 from ‘pim::PimNoop*’ to ‘std::shared_ptr<pim::PimEvent>&&’
+/usr/include/c++/7/bits/shared_ptr.h:236:2: note: candidate: template<class _Yp, class> std::shared_ptr<_Tp>::shared_ptr(const std::shared_ptr<_Yp>&)
+  shared_ptr(const shared_ptr<_Yp>& __r) noexcept
+  ^~~~~~~~~~
+/usr/include/c++/7/bits/shared_ptr.h:236:2: note:   template argument deduction/substitution failed:
+unittester.cpp:16:30: note:   mismatched types ‘const std::shared_ptr<_Tp>’ and ‘pim::PimNoop*’
+  m_PimEvent mpn_4(new PimNoop); peq.insertEvent(mpn_4);
+                              ^
+In file included from /usr/include/c++/7/memory:81:0,
+                 from pimevent.h:4,
+                 from unittester.cpp:3:
+/usr/include/c++/7/bits/shared_ptr.h:224:2: note: candidate: template<class _Yp> std::shared_ptr<_Tp>::shared_ptr(const std::shared_ptr<_Yp>&, std::shared_ptr<_Tp>::element_type*)
+  shared_ptr(const shared_ptr<_Yp>& __r, element_type* __p) noexcept
+  ^~~~~~~~~~
+/usr/include/c++/7/bits/shared_ptr.h:224:2: note:   template argument deduction/substitution failed:
+unittester.cpp:16:30: note:   mismatched types ‘const std::shared_ptr<_Tp>’ and ‘pim::PimNoop*’
+  m_PimEvent mpn_4(new PimNoop); peq.insertEvent(mpn_4);
+                              ^
+In file included from /usr/include/c++/7/memory:81:0,
+                 from pimevent.h:4,
+                 from unittester.cpp:3:
+/usr/include/c++/7/bits/shared_ptr.h:202:2: note: candidate: template<class _Deleter, class _Alloc> std::shared_ptr<_Tp>::shared_ptr(std::nullptr_t, _Deleter, _Alloc)
+  shared_ptr(nullptr_t __p, _Deleter __d, _Alloc __a)
+  ^~~~~~~~~~
+/usr/include/c++/7/bits/shared_ptr.h:202:2: note:   template argument deduction/substitution failed:
+unittester.cpp:16:30: note:   candidate expects 3 arguments, 1 provided
+  m_PimEvent mpn_4(new PimNoop); peq.insertEvent(mpn_4);
+                              ^
+In file included from /usr/include/c++/7/memory:81:0,
+                 from pimevent.h:4,
+                 from unittester.cpp:3:
+/usr/include/c++/7/bits/shared_ptr.h:183:2: note: candidate: template<class _Yp, class _Deleter, class _Alloc, class> std::shared_ptr<_Tp>::shared_ptr(_Yp*, _Deleter, _Alloc)
+  shared_ptr(_Yp* __p, _Deleter __d, _Alloc __a)
+  ^~~~~~~~~~
+/usr/include/c++/7/bits/shared_ptr.h:183:2: note:   template argument deduction/substitution failed:
+unittester.cpp:16:30: note:   candidate expects 3 arguments, 1 provided
+  m_PimEvent mpn_4(new PimNoop); peq.insertEvent(mpn_4);
+                              ^
+In file included from /usr/include/c++/7/memory:81:0,
+                 from pimevent.h:4,
+                 from unittester.cpp:3:
+/usr/include/c++/7/bits/shared_ptr.h:163:2: note: candidate: template<class _Deleter> std::shared_ptr<_Tp>::shared_ptr(std::nullptr_t, _Deleter)
+  shared_ptr(nullptr_t __p, _Deleter __d)
+  ^~~~~~~~~~
+/usr/include/c++/7/bits/shared_ptr.h:163:2: note:   template argument deduction/substitution failed:
+unittester.cpp:16:30: note:   candidate expects 2 arguments, 1 provided
+  m_PimEvent mpn_4(new PimNoop); peq.insertEvent(mpn_4);
+                              ^
+In file included from /usr/include/c++/7/memory:81:0,
+                 from pimevent.h:4,
+                 from unittester.cpp:3:
+/usr/include/c++/7/bits/shared_ptr.h:146:2: note: candidate: template<class _Yp, class _Deleter, class> std::shared_ptr<_Tp>::shared_ptr(_Yp*, _Deleter)
+  shared_ptr(_Yp* __p, _Deleter __d)
+  ^~~~~~~~~~
+/usr/include/c++/7/bits/shared_ptr.h:146:2: note:   template argument deduction/substitution failed:
+unittester.cpp:16:30: note:   candidate expects 2 arguments, 1 provided
+  m_PimEvent mpn_4(new PimNoop); peq.insertEvent(mpn_4);
+                              ^
+In file included from /usr/include/c++/7/memory:81:0,
+                 from pimevent.h:4,
+                 from unittester.cpp:3:
+/usr/include/c++/7/bits/shared_ptr.h:129:2: note: candidate: template<class _Yp, class> std::shared_ptr<_Tp>::shared_ptr(_Yp*)
+  shared_ptr(_Yp* __p) : __shared_ptr<_Tp>(__p) { }
+  ^~~~~~~~~~
+/usr/include/c++/7/bits/shared_ptr.h:129:2: note:   template argument deduction/substitution failed:
+/usr/include/c++/7/bits/shared_ptr.h:119:7: note: candidate: std::shared_ptr<_Tp>::shared_ptr(const std::shared_ptr<_Tp>&) [with _Tp = pim::PimEvent]
+       shared_ptr(const shared_ptr&) noexcept = default;
+       ^~~~~~~~~~
+/usr/include/c++/7/bits/shared_ptr.h:119:7: note:   no known conversion for argument 1 from ‘pim::PimNoop*’ to ‘const std::shared_ptr<pim::PimEvent>&’
+/usr/include/c++/7/bits/shared_ptr.h:117:17: note: candidate: constexpr std::shared_ptr<_Tp>::shared_ptr() [with _Tp = pim::PimEvent]
+       constexpr shared_ptr() noexcept : __shared_ptr<_Tp>() { }
+                 ^~~~~~~~~~
+/usr/include/c++/7/bits/shared_ptr.h:117:17: note:   candidate expects 0 arguments, 1 provided
+make: *** [Makefile:2: test] Error 1

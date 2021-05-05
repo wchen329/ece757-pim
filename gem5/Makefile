@@ -1,4 +1,5 @@
 # Makefile for PIM
+GEM5_JOBS=5
 CFG=configs/example/se.py
 BUILD_OPTS=CPU_MODELS=MinorCPU,AtomicSimpleCPU
 OPTS=--cmd=../bench/testpim.bm --cpu-type=MinorCPU --l1d_size=16384 --l1i_size=16384 --l2_size=1048576 --caches --l2cache --cacheline_size=64

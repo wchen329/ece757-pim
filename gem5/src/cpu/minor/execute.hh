@@ -52,6 +52,9 @@
 #include "cpu/minor/pipe_data.hh"
 #include "cpu/minor/scoreboard.hh"
 
+#include "cpu/minor/pimevent.h"
+#include "cpu/minor/pim_glue/pimstore.h"
+
 namespace Minor
 {
 
@@ -348,6 +351,8 @@ class Execute : public Named
     /** Like the drain interface on SimObject */
     unsigned int drain();
     void drainResume();
+
+    pim::PimEventQueue peq;
 };
 
 }

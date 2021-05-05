@@ -1173,8 +1173,11 @@ Execute::commit(ThreadID thread_id, bool only_commit_microops, bool discard,
 
 		if(mmio_addr)
 		{
-			// Try discard
-			lsq.popResponse(mem_response);
+			// Create new event push it on there
+			pim::m_PimEvent pet(new pim::PimStore(lsq, mem_response));
+
+			// Push event onto queue
+			peq.insertEvent(pet);
 		}
 
 		else
@@ -1453,6 +1456,9 @@ Execute::isInbetweenInsts(ThreadID thread_id) const
 void
 Execute::evaluate()
 {
+    // First thing we do, is evaluate PIM
+    peq.cycle();
+
     if (!inp.outputWire->isBubble())
         inputBuffer[inp.outputWire->threadId].setTail(*inp.outputWire);
 

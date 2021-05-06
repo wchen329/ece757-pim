@@ -52,7 +52,9 @@
 #include "cpu/minor/pipe_data.hh"
 #include "cpu/minor/scoreboard.hh"
 
+#include "cpu/minor/pimnoop.h"
 #include "cpu/minor/pimevent.h"
+#include "cpu/minor/pimexec.h"
 #include "cpu/minor/pim_glue/pimstore.h"
 #include "cpu/minor/pim_glue/pimsm.h"
 

@@ -9,11 +9,12 @@ namespace pim
 		public:
 //			PimSM(Dcacheport&)
 
-
+			uint64_t& op() { return op_reg; }
 			uint64_t& Src1() { return src1_reg; }
 			uint64_t& Src2() { return src2_reg; }
 			uint64_t& Dst() { return dst_reg; }
 		private:
+			uint64_t op_reg;
 			uint64_t src1_reg;
 			uint64_t src2_reg;
 			uint64_t dst_reg;

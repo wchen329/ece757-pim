@@ -1147,30 +1147,32 @@ Execute::commit(ThreadID thread_id, bool only_commit_microops, bool discard,
             } else {
 
                 bool mmio_addr = false;
+		pim::m_PimEvent nextevent;
 		if(mem_response->request != nullptr)
 		{
+
 
         	 // Test for memory mapped PIM addresses
 		 switch(mem_response->request->getVaddr())
 		 {
 			case ADDR_PIM_EXECUTE:
-				fprintf(stdout, "[PIM] Received execute request.\n");
+				nextevent = pim::m_PimEvent(new pim::PimNoop);
 				mmio_addr = true;
 				break;
 			case ADDR_PIM_MACROOP:
-				fprintf(stdout, "[PIM] Setting macroop.\n");
+				nextevent = pim::m_PimEvent(new pim::PimMMIORegSt(psm.op(), pim::byte_coalesce<uint64_t>(mem_response->data)));
 				mmio_addr = true;
 				break;
 			case ADDR_PIM_SRC1:
-				fprintf(stdout, "[PIM] Writing to src1 register\n");
+				nextevent = pim::m_PimEvent(new pim::PimMMIORegSt(psm.Src1(), pim::byte_coalesce<uint64_t>(mem_response->data)));
 				mmio_addr = true;
 				break;
 			case ADDR_PIM_SRC2:
-				fprintf(stdout, "[PIM] Writing to src2 register\n");
+				nextevent = pim::m_PimEvent(new pim::PimMMIORegSt(psm.Src2(), pim::byte_coalesce<uint64_t>(mem_response->data)));
 				mmio_addr = true;
 				break;
 			case ADDR_PIM_DST:
-				fprintf(stdout, "[PIM] Writing to dst register\n");
+				nextevent = pim::m_PimEvent(new pim::PimMMIORegSt(psm.Dst(), pim::byte_coalesce<uint64_t>(mem_response->data)));
 				mmio_addr = true;
 				break;
 	    	    }
@@ -1193,7 +1195,7 @@ Execute::commit(ThreadID thread_id, bool only_commit_microops, bool discard,
 					if(!peq.pending_count())
 					{
 						// Create new event push it on there
-						pim::m_PimEvent pet(new pim::PimStore(lsq, mem_response));
+						pim::m_PimEvent pet = nextevent;
 						pet->set_id(inst->id.fetchSeqNum);
 	
 						// Push event onto queue

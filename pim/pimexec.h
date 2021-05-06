@@ -21,6 +21,21 @@ namespace pim
 
 	};
 
+	template<class RetType> RetType byte_coalesce(uint8_t* byte_ptr)
+	{
+		RetType rt = 0;
+		uint8_t* retb = reinterpret_cast<uint8_t*>(&rt);
+
+		size_t num_bytes = sizeof(RetType);
+
+		for(uint32_t itr = 0; itr < num_bytes; ++itr)
+		{
+			retb[itr] = byte_ptr[itr];
+		}
+
+		return rt;
+	}
+
 	/* PimMMIORegSt
 	 * Store a memory mapped 64-bit register.
 	 */

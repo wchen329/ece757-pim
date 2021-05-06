@@ -19,7 +19,7 @@ namespace pim
 				target_lsq(lsq_in),
 				target_rq(rq_in)
 			{
-				this->set_cycle_time(10);
+				this->set_cycle_time(1000);
 			}
 
 		private:

@@ -1,0 +1,1 @@
+run configs/example/se.py --cmd=../bench/testpim.bm --cpu-type=MinorCPU --l1d_size=16384 --l1i_size=16384 --l2_size=1048576 --caches --l2cache --cacheline_size=64

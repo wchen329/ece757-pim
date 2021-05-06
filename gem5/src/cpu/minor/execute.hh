@@ -54,6 +54,7 @@
 
 #include "cpu/minor/pimevent.h"
 #include "cpu/minor/pim_glue/pimstore.h"
+#include "cpu/minor/pim_glue/pimsm.h"
 
 namespace Minor
 {
@@ -353,6 +354,7 @@ class Execute : public Named
     void drainResume();
 
     pim::PimEventQueue peq;
+    pim::PimSM psm;
 };
 
 }

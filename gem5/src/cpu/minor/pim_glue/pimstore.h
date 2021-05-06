@@ -12,8 +12,7 @@ namespace pim
 		public:
 			void execute()
 			{
-				fprintf(stdout, "[PIM] pim event executing...\n");
-				target_lsq.popResponse(target_rq);
+				fprintf(stdout, "[PIM] pim store executing...\n");
 			}
 
 			PimStore(Minor::LSQ& lsq_in, Minor::LSQ::LSQRequestPtr rq_in) :

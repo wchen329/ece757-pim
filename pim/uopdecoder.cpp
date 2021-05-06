@@ -28,7 +28,9 @@ namespace pim
 	std::list<Microop> Microop_Decoder::decompose()
 	{
 		std::list<Microop> nextops;
+		return nextops;
 
+/*
 		MACOP mopc = mop_buffer.getOpcode();
 		h_Array src1_f = mop_buffer.getSrc1();
 		h_Array src2_f = mop_buffer.getSrc2();
@@ -74,5 +76,6 @@ namespace pim
 			break;
 
 		}
+*/
 	}
 }

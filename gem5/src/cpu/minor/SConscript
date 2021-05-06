@@ -57,6 +57,7 @@ if 'MinorCPU' in env['CPU_MODELS']:
     Source('scoreboard.cc')
     Source('stats.cc')
     Source('pimevent.cpp')
+    Source('pimexec.cpp')
     Source('uopdecoder.cpp')
 
 

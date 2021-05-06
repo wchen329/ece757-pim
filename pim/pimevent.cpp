@@ -15,6 +15,10 @@ namespace pim
 			{
 				// If we have waited long enough, perform operation
 				(*itr)->execute();
+
+				// Also add it to the ID list
+				ids.insert((*itr)->get_id());
+
 				dead_list.push_back(itr);
 			}
 
@@ -36,5 +40,15 @@ namespace pim
 		}
 	}
 
-	
+	bool PimEventQueue::handshake(uint64_t id)
+	{
+		if(ids.find(id) != ids.end())
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
 }

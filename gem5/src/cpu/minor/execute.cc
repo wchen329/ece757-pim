@@ -1142,13 +1142,17 @@ Execute::commit(ThreadID thread_id, bool only_commit_microops, bool discard,
                     *inst, ex_info.streamSeqNum);
 
                 lsq.popResponse(mem_response);
+	        completed_inst = true;
+            	completed_mem_ref = true;
             } else {
 
-                    bool mmio_addr = false;
+                bool mmio_addr = false;
+		if(mem_response->request != nullptr)
+		{
 
-        	    // Test for memory mapped PIM addresses
-		    switch(mem_response->request->getVaddr())
-		    {
+        	 // Test for memory mapped PIM addresses
+		 switch(mem_response->request->getVaddr())
+		 {
 			case ADDR_PIM_EXECUTE:
 				fprintf(stdout, "[PIM] Received execute request.\n");
 				mmio_addr = true;
@@ -1166,29 +1170,49 @@ Execute::commit(ThreadID thread_id, bool only_commit_microops, bool discard,
 				mmio_addr = true;
 				break;
 			case ADDR_PIM_DST:
-				fprintf(stdout, "[PIM Writing to dst register\n");
+				fprintf(stdout, "[PIM] Writing to dst register\n");
 				mmio_addr = true;
 				break;
 	    	    }
-
-		if(mmio_addr)
-		{
-			// Create new event push it on there
-			pim::m_PimEvent pet(new pim::PimStore(lsq, mem_response));
-
-			// Push event onto queue
-			peq.insertEvent(pet);
 		}
+
+			if(mmio_addr)
+			{
+
+				if(peq.handshake(inst->id.fetchSeqNum))
+				{
+					committed_inst = true;
+					completed_inst = true;
+					completed_mem_ref = true;
+					lsq.popResponse(mem_response);
+				}
+
+				else
+				{
+
+					if(!peq.pending_count())
+					{
+						// Create new event push it on there
+						pim::m_PimEvent pet(new pim::PimStore(lsq, mem_response));
+						pet->set_id(inst->id.fetchSeqNum);
+	
+						// Push event onto queue
+						peq.insertEvent(pet);
+					}
+
+       	                        }
+
+                        }
 
 		else
 		{
                     handleMemResponse(inst, mem_response, branch, fault);
                     committed_inst = true;
+	            completed_inst = true;
+            	    completed_mem_ref = true;
 		}
             }
 
-            completed_mem_ref = true;
-            completed_inst = true;
         } else if (can_commit_insts) {
             /* If true, this instruction will, subject to timing tweaks,
              *  be considered for completion.  try_to_commit flattens

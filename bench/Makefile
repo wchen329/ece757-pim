@@ -5,9 +5,9 @@
 .SUFFIXES: .cpp .bm
 
 .cpp.bm:
-	g++ $< -o $@
+	g++ -g $< -o $@
 
-all: readalot.bm matmul.bm
+all: readalot.bm matmul.bm testpim.bm
 
 clean:
 	rm *.bm

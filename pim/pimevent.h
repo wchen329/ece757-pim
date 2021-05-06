@@ -2,6 +2,7 @@
 #define __PIMEVENT_H__
 #include <cstdint>
 #include <memory>
+#include <set>
 #include <list>
 
 namespace pim
@@ -29,6 +30,10 @@ namespace pim
 			 */
 			void cycle() { --cycle_time; }
 
+			
+			void set_id(uint64_t id) { this->id = id; }
+			uint64_t get_id() { return id; }
+
 			/* Default constructor
 			 */
 			PimEvent() : cycle_time(0)
@@ -37,6 +42,7 @@ namespace pim
 		private:
 			// cycles until guarenteed the operation is valid
 			uint64_t cycle_time;
+			uint64_t id;
 	};
 
 	typedef std::shared_ptr<PimEvent> m_PimEvent;
@@ -62,8 +68,14 @@ namespace pim
 
 			// Number of events still in queue
 			size_t pending_count() { return eq.size(); }
+
+			// Handshake: return 1 if the ID number has already finished
+			// if not, return 0
+			bool handshake(uint64_t id);
+			
 		private:
 			std::list<m_PimEvent> eq;
+			std::set<uint64_t> ids;
 	};
 }
 

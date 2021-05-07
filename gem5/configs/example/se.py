@@ -193,6 +193,9 @@ system.cpu_clk_domain = SrcClockDomain(clock = options.cpu_clock,
                                        voltage_domain =
                                        system.cpu_voltage_domain)
 
+# Set clock frequency
+system.clk_domain.clock = '2GHz';
+
 # If elastic tracing is enabled, then configure the cpu and attach the elastic
 # trace probe
 if options.elastic_trace_en:

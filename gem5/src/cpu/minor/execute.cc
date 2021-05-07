@@ -354,6 +354,7 @@ Execute::handleMemResponse(MinorDynInstPtr inst,
             fault = inst->translationFault;
 
             fault->invoke(thread, inst->staticInst);
+	ptlb.register_mapping(response->request->getVaddr(), response->request->getPaddr());
         }
     } else if (!packet) {
         DPRINTF(MinorMem, "Completing failed request inst: %s\n",
@@ -479,7 +480,6 @@ Execute::executeMemRefInst(MinorDynInstPtr inst, BranchData &branch,
             if (init_fault != NoFault) {
                 assert(inst->translationFault != NoFault);
                 // Translation faults are dealt with in handleMemResponse()
-                init_fault = NoFault;
             } else {
                 // If we have a translation fault then it got suppressed  by
                 // initateAcc()
@@ -1216,6 +1216,7 @@ Execute::commit(ThreadID thread_id, bool only_commit_microops, bool discard,
 		else
 		{
                     handleMemResponse(inst, mem_response, branch, fault);
+		    ptlb.register_mapping(mem_response->request->getVaddr(), mem_response->request->getPaddr());
                     committed_inst = true;
 	            completed_inst = true;
             	    completed_mem_ref = true;

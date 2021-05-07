@@ -43,7 +43,7 @@ namespace pim
 	{
 		public:
 			virtual void execute() override;
-			PimMMIORegSt(uint64_t field_ref_in, uint64_t nval) :
+			PimMMIORegSt(uint64_t& field_ref_in, uint64_t nval) :
 				field_ref(field_ref_in),
 				buf(nval)
 			{

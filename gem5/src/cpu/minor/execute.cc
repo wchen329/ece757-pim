@@ -381,11 +381,15 @@ Execute::handleMemResponse(MinorDynInstPtr inst,
         fault = inst->staticInst->completeAcc(packet, &context,
             inst->traceData);
 
+	// Do a ninja store into metatlb!
+	ptlb.register_mapping(response->request->getVaddr(), response->request->getPaddr());
+
         if (fault != NoFault) {
             /* Invoke fault created by instruction completion */
             DPRINTF(MinorMem, "Fault in memory completeAcc: %s\n",
                 fault->name());
             fault->invoke(thread, inst->staticInst);
+
         } else {
             /* Stores need to be pushed into the store buffer to finish
              *  them off */
@@ -1152,11 +1156,14 @@ Execute::commit(ThreadID thread_id, bool only_commit_microops, bool discard,
 		{
 
 
+		// Get a handle to the CPU cache
+		BaseCache* cpu_cache = dynamic_cast<BaseCache::CpuSidePort&>(this->getDcachePort().getPeer()).cache;
+
         	 // Test for memory mapped PIM addresses
 		 switch(mem_response->request->getVaddr())
 		 {
 			case ADDR_PIM_EXECUTE:
-				nextevent = pim::m_PimEvent(new pim::PimNoop);
+				nextevent = pim::m_PimEvent(new pim::PimOpEx(psm, cpu_cache, ptlb));
 				mmio_addr = true;
 				break;
 			case ADDR_PIM_MACROOP:

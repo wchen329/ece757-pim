@@ -4,10 +4,13 @@
 
 namespace pim
 {
+	/* PimSM
+	 * Was originally going to be a state machine...
+	 * But here it is actually just state (no machine)_
+	 */
 	class PimSM
 	{
 		public:
-//			PimSM(Dcacheport&)
 
 			uint64_t& op() { return op_reg; }
 			uint64_t& Src1() { return src1_reg; }

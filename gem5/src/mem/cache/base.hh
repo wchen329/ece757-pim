@@ -274,6 +274,7 @@ class BaseCache : public ClockedObject
 
     };
 
+    public:
     /**
      * The CPU-side port extends the base cache slave port with access
      * functions for functional, atomic and timing requests.
@@ -282,8 +283,6 @@ class BaseCache : public ClockedObject
     {
       private:
 
-        // a pointer to our specific cache implementation
-        BaseCache *cache;
 
       protected:
         virtual bool recvTimingSnoopResp(PacketPtr pkt) override;
@@ -303,12 +302,14 @@ class BaseCache : public ClockedObject
         CpuSidePort(const std::string &_name, BaseCache *_cache,
                     const std::string &_label);
 
+        // a pointer to our specific cache implementation
+        BaseCache *cache;
+
     };
 
     CpuSidePort cpuSidePort;
     MemSidePort memSidePort;
 
-  protected:
 
     /** Miss status registers */
     MSHRQueue mshrQueue;
@@ -334,6 +335,7 @@ class BaseCache : public ClockedObject
     /** To probe when a cache fill occurs */
     ProbePointArg<PacketPtr> *ppFill;
 
+  protected:
     /**
      * The writeAllocator drive optimizations for streaming writes.
      * It first determines whether a WriteReq MSHR should be delayed,

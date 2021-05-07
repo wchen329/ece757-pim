@@ -53,10 +53,14 @@
 #include "cpu/minor/scoreboard.hh"
 
 #include "cpu/minor/pimnoop.h"
+#include "cpu/minor/pimcacheop.h"
 #include "cpu/minor/pimevent.h"
 #include "cpu/minor/pimexec.h"
+#include "cpu/minor/pimtlblookup.h"
 #include "cpu/minor/pim_glue/pimstore.h"
 #include "cpu/minor/pim_glue/pimsm.h"
+
+#include "mem/cache/base.hh"
 
 namespace Minor
 {
@@ -357,6 +361,7 @@ class Execute : public Named
 
     pim::PimEventQueue peq;
     pim::PimSM psm;
+    pim::MetaTLB ptlb;
 };
 
 }

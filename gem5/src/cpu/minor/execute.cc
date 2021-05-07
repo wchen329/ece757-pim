@@ -1216,7 +1216,13 @@ Execute::commit(ThreadID thread_id, bool only_commit_microops, bool discard,
 		else
 		{
                     handleMemResponse(inst, mem_response, branch, fault);
-		    ptlb.register_mapping(mem_response->request->getVaddr(), mem_response->request->getPaddr());
+                    if(mem_response->request->getVaddr() == psm.Src1() ||
+			mem_response->request->getVaddr() == psm.Src2() ||
+			mem_response->request->getVaddr() == psm.Dst())
+                    {
+		    ptlb.register_mapping(mem_response->request->getVaddr(),
+					  mem_response->request->getPaddr());
+                    }
                     committed_inst = true;
 	            completed_inst = true;
             	    completed_mem_ref = true;

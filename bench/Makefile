@@ -10,7 +10,8 @@ OBJS=sha1.o
 .cpp.bm: $(OBJS)
 	g++ -g $(OBJS) $< -o $@
 
-all: $(OBJS) readalot.bm matmul.bm testpim.bm testpim_adv.bm hashpage_cpu.bm hashpage_asic.bm
+all: $(OBJS) readalot.bm matmul.bm testpim.bm testpim_adv.bm hashpage_cpu.bm hashpage_asic.bm \
+	matmul_asic.bm
 
 clean:
 	rm *.bm

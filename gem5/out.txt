@@ -1,0 +1,158 @@
+scons -j5 build/X86/gem5.opt CPU_MODELS=MinorCPU,AtomicSimpleCPU
+scons: Reading SConscript files ...
+Warning: Your compiler doesn't support incremental linking and lto at the same
+         time, so lto is being disabled. To force lto on anyway, use the
+         --force-lto option. That will disable partial linking.
+Warning: While checking protoc version: [Errno 2] No such file or directory:
+         'protoc': 'protoc'
+Info: Using Python config: python2.7-config
+Checking for C header file Python.h... (cached) yes
+Checking for C library python2.7... (cached) yes
+Checking for C library pthread... (cached) yes
+Checking for C library dl... (cached) yes
+Checking for C library util... (cached) yes
+Checking for C library m... (cached) yes
+Checking for accept(0,0,0) in C++ library None... (cached) yes
+Checking for zlibVersion() in C++ library z... (cached) yes
+Checking for C header file valgrind/valgrind.h... (cached) no
+Checking for clock_nanosleep(0,0,NULL,NULL) in C library None... (cached) yes
+Checking for timer_create(CLOCK_MONOTONIC, NULL, NULL) in C library None... (cached) no
+Checking for timer_create(CLOCK_MONOTONIC, NULL, NULL) in C library rt... (cached) yes
+Checking for C library tcmalloc... (cached) no
+Checking for C library tcmalloc_minimal... (cached) no
+Warning: You can get a 12% performance improvement by installing tcmalloc
+         (libgoogle-perftools-dev package on Ubuntu or RedHat).
+Checking for char temp; backtrace_symbols_fd((void*)&temp, 0, 0) in C library None... (cached) yes
+Checking for C header file fenv.h... (cached) yes
+Checking for C header file png.h... (cached) no
+Warning: Header file <png.h> not found.
+         This host has no libpng library.
+         Disabling support for PNG framebuffers.
+Checking for C header file linux/kvm.h... (cached) yes
+Checking for C header file linux/if_tun.h... (cached) yes
+Checking size of struct kvm_xsave ... (cached) yes
+Checking for member exclude_host in struct perf_event_attr...(cached) yes
+Checking for hdf5-serial using pkg-config...Package hdf5-serial was not found in the pkg-config search path.
+Perhaps you should add the directory containing `hdf5-serial.pc'
+to the PKG_CONFIG_PATH environment variable
+No package 'hdf5-serial' found
+ no
+Checking for hdf5 using pkg-config...Package hdf5 was not found in the pkg-config search path.
+Perhaps you should add the directory containing `hdf5.pc'
+to the PKG_CONFIG_PATH environment variable
+No package 'hdf5' found
+ no
+Checking for H5Fcreate("", 0, 0, 0) in C library hdf5... (cached) yes
+Checking for H5::H5File("", 0) in C++ library hdf5_cpp... (cached) yes
+Checking whether __i386__ is declared... (cached) no
+Checking whether __x86_64__ is declared... (cached) yes
+Building in /home/wchen/ece757-pim/gem5/build/X86
+Using saved variables file /home/wchen/ece757-pim/gem5/build/variables/X86
+warn: CheckedInt already exists in allParams. This may be caused by the Python 2.7 compatibility layer.
+warn: Enum already exists in allParams. This may be caused by the Python 2.7 compatibility layer.
+warn: ScopedEnum already exists in allParams. This may be caused by the Python 2.7 compatibility layer.
+scons: done reading SConscript files.
+scons: Building targets ...
+ [     CXX] X86/mem/ruby/protocol/DMA_Controller.cc -> .o
+ [     CXX] X86/mem/ruby/protocol/DMA_Wakeup.cc -> .o
+ [     CXX] X86/mem/ruby/protocol/Directory_Controller.cc -> .o
+ [     CXX] X86/mem/ruby/protocol/Directory_Wakeup.cc -> .o
+ [     CXX] X86/mem/ruby/protocol/L1Cache_Controller.cc -> .o
+ [     CXX] X86/mem/ruby/protocol/L1Cache_Wakeup.cc -> .o
+ [     CXX] X86/cpu/minor/cpu.cc -> .o
+ [     CXX] X86/cpu/minor/decode.cc -> .o
+ [     CXX] X86/cpu/minor/execute.cc -> .o
+ [     CXX] X86/cpu/minor/fetch1.cc -> .o
+In file included from build/X86/cpu/minor/pimcacheop.h:16:0,
+                 from build/X86/cpu/minor/execute.hh:56,
+                 from build/X86/cpu/minor/pipeline.hh:51,
+                 from build/X86/cpu/minor/cpu.cc:43:
+build/X86/cpu/minor/pim_glue/pimsm.h: In member function 'uint64_t& pim::PimSM::op()':
+build/X86/cpu/minor/pim_glue/pimsm.h:16:28: error: 'op_reg' was not declared in this scope
+    uint64_t& op() { return op_reg; }
+                            ^~~~~~
+build/X86/cpu/minor/pim_glue/pimsm.h:16:28: note: suggested alternative: 'dst_reg'
+    uint64_t& op() { return op_reg; }
+                            ^~~~~~
+                            dst_reg
+build/X86/cpu/minor/pim_glue/pimsm.h: In constructor 'pim::PimSM::PimSM()':
+build/X86/cpu/minor/pim_glue/pimsm.h:52:5: error: class 'pim::PimSM' does not have any field named 'op_reg'
+     op_reg(0),
+     ^~~~~~
+build/X86/cpu/minor/pim_glue/pimsm.h:56:4: error: expected identifier before '{' token
+    {
+    ^
+In file included from build/X86/cpu/minor/pimcacheop.h:16:0,
+                 from build/X86/cpu/minor/execute.hh:56,
+                 from build/X86/cpu/minor/pipeline.hh:51,
+                 from build/X86/cpu/minor/decode.cc:40:
+build/X86/cpu/minor/pim_glue/pimsm.h: In member function 'uint64_t& pim::PimSM::op()':
+build/X86/cpu/minor/pim_glue/pimsm.h:16:28: error: 'op_reg' was not declared in this scope
+    uint64_t& op() { return op_reg; }
+                            ^~~~~~
+build/X86/cpu/minor/pim_glue/pimsm.h:16:28: note: suggested alternative: 'dst_reg'
+    uint64_t& op() { return op_reg; }
+                            ^~~~~~
+                            dst_reg
+build/X86/cpu/minor/pim_glue/pimsm.h: In constructor 'pim::PimSM::PimSM()':
+build/X86/cpu/minor/pim_glue/pimsm.h:52:5: error: class 'pim::PimSM' does not have any field named 'op_reg'
+     op_reg(0),
+     ^~~~~~
+build/X86/cpu/minor/pim_glue/pimsm.h:56:4: error: expected identifier before '{' token
+    {
+    ^
+In file included from build/X86/cpu/minor/pimcacheop.h:16:0,
+                 from build/X86/cpu/minor/execute.hh:56,
+                 from build/X86/cpu/minor/pipeline.hh:51,
+                 from build/X86/cpu/minor/fetch1.cc:45:
+build/X86/cpu/minor/pim_glue/pimsm.h: In member function 'uint64_t& pim::PimSM::op()':
+build/X86/cpu/minor/pim_glue/pimsm.h:16:28: error: 'op_reg' was not declared in this scope
+    uint64_t& op() { return op_reg; }
+                            ^~~~~~
+build/X86/cpu/minor/pim_glue/pimsm.h:16:28: note: suggested alternative: 'dst_reg'
+    uint64_t& op() { return op_reg; }
+                            ^~~~~~
+                            dst_reg
+build/X86/cpu/minor/pim_glue/pimsm.h: In constructor 'pim::PimSM::PimSM()':
+build/X86/cpu/minor/pim_glue/pimsm.h:52:5: error: class 'pim::PimSM' does not have any field named 'op_reg'
+     op_reg(0),
+     ^~~~~~
+build/X86/cpu/minor/pim_glue/pimsm.h:56:4: error: expected identifier before '{' token
+    {
+    ^
+In file included from build/X86/cpu/minor/pimcacheop.h:16:0,
+                 from build/X86/cpu/minor/execute.hh:56,
+                 from build/X86/cpu/minor/execute.cc:38:
+build/X86/cpu/minor/pim_glue/pimsm.h: In member function 'uint64_t& pim::PimSM::op()':
+build/X86/cpu/minor/pim_glue/pimsm.h:16:28: error: 'op_reg' was not declared in this scope
+    uint64_t& op() { return op_reg; }
+                            ^~~~~~
+build/X86/cpu/minor/pim_glue/pimsm.h:16:28: note: suggested alternative: 'dst_reg'
+    uint64_t& op() { return op_reg; }
+                            ^~~~~~
+                            dst_reg
+build/X86/cpu/minor/pim_glue/pimsm.h: In constructor 'pim::PimSM::PimSM()':
+build/X86/cpu/minor/pim_glue/pimsm.h:52:5: error: class 'pim::PimSM' does not have any field named 'op_reg'
+     op_reg(0),
+     ^~~~~~
+build/X86/cpu/minor/pim_glue/pimsm.h:56:4: error: expected identifier before '{' token
+    {
+    ^
+ [    LINK]  -> X86/mem/ruby/protocol/lib.o.partial
+scons: *** [build/X86/cpu/minor/cpu.o] Error 1
+scons: *** [build/X86/cpu/minor/decode.o] Error 1
+scons: *** [build/X86/cpu/minor/fetch1.o] Error 1
+scons: *** [build/X86/cpu/minor/execute.o] Error 1
+scons: building terminated because of errors.
+*** Summary of Warnings ***
+Warning: Your compiler doesn't support incremental linking and lto at the same
+         time, so lto is being disabled. To force lto on anyway, use the
+         --force-lto option. That will disable partial linking.
+Warning: While checking protoc version: [Errno 2] No such file or directory:
+         'protoc': 'protoc'
+Warning: You can get a 12% performance improvement by installing tcmalloc
+         (libgoogle-perftools-dev package on Ubuntu or RedHat).
+Warning: Header file <png.h> not found.
+         This host has no libpng library.
+         Disabling support for PNG framebuffers.
+make: *** [Makefile:10: opt] Error 2

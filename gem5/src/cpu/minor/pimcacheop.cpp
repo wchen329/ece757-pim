@@ -33,6 +33,9 @@ namespace pim
 			s2_32.push_back(src2_nxt);
 		}
 
+		std::string output_buf;
+		unsigned char* ctext = nullptr;
+
 		// Perform operation
 		switch(state.op())
 		{
@@ -47,24 +50,42 @@ namespace pim
                                 );// want fall through
 				adder(s1_32, s2_32);
 				dst_32 = s1_32;
+				std::copy<VTypeItr, int32_t*>(dst_32.begin(), dst_32.end(),
+					reinterpret_cast<int32_t*>(dst->data));
 				break;
 			case MCC_ADD:
 				adder(s1_32, s2_32);
 				dst_32 = s1_32;
+				std::copy<VTypeItr, int32_t*>(dst_32.begin(), dst_32.end(),
+					reinterpret_cast<int32_t*>(dst->data));
 				break;
 			case MCC_MUL:
+				multiplier(s1_32, s2_32);
+				dst_32 = s1_32;
+				std::copy<VTypeItr, int32_t*>(dst_32.begin(), dst_32.end(),
+					reinterpret_cast<int32_t*>(dst->data));
 				break;
 			case MCC_SHA:
+				output_buf = sha1(state.encbuf());
+				for(size_t itr = 0; itr < output_buf.size(); ++itr)
+				{
+					dst->data[itr] = output_buf[itr];
+				}
 				break;
 			case MCC_AES_BC:
+				unsigned num_bytes = 64;
+				unsigned& gcc_bytes = num_bytes;
+				ctext = state.aes_instance().EncryptCBC(src1->data, gcc_bytes, src2->data, src2->data + num_bytes/2, gcc_bytes);
+				// Copy cipher text back
+				for(size_t itr = 0; itr < num_bytes; ++itr)
+				{
+					dst->data[itr] = output_buf[itr];
+				}
+				delete[] ctext;
 				break;
-			default:
-				return; // for noops and unsupported operations
 		}
 
 		// Finish it off by writing back to the destination line
-		std::copy<VTypeItr, int32_t*>(dst_32.begin(), dst_32.end(),
-			reinterpret_cast<int32_t*>(dst->data));
 	}
 }
 

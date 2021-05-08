@@ -20,4 +20,7 @@
 // (ASIC based) This is the address of dst
 #define ADDR_PIM_DST 0xFFFE000000000003
 
+// (ASIC based) This is the address of a PIM write
+#define ADDR_PIM_SHA_COMMIT 0xFFFE000000000004
+
 #endif

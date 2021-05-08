@@ -21,8 +21,7 @@ namespace pim
 		CC_OR,
 		CC_XOR,
 		CC_NOT,
-		CC_RR,
-		CC_RL
+		CC_ASML
 	};
 
 	/* Microop

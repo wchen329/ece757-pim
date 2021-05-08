@@ -269,9 +269,9 @@ std::string sha1(const std::string &string)
     return checksum.final();
 }
 
-int main(int argc, char *argv[])
+/*int main(int argc, char *argv[])
 {
     std::cout << "hello: " << sha1("hello") << "\n";
     return 0;
 
-}
+}*/

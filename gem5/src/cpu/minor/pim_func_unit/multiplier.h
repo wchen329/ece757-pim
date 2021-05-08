@@ -1,3 +1,6 @@
+#ifndef __MULTIPLIER_H__
+#define __MULTIPLIER_H__
+
 #include <iostream>
 #include <vector>
 #include <algorithm>
@@ -9,3 +12,4 @@ void multiplier(std::vector<T> &a, std::vector<T> &b)
 	return;
 }
 
+#endif

@@ -1179,6 +1179,11 @@ Execute::commit(ThreadID thread_id, bool only_commit_microops, bool discard,
 				nextevent = pim::m_PimEvent(new pim::PimMMIORegSt(psm.Dst(), pim::byte_coalesce<uint64_t>(mem_response->data)));
 				mmio_addr = true;
 				break;
+			case ADDR_PIM_SHA_COMMIT:
+				nextevent = pim::m_PimEvent(new pim::PimNoop);
+				psm.push_data(ptlb, cpu_cache);
+				mmio_addr = true;
+				break;
 	    	    }
 		}
 

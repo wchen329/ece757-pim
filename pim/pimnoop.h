@@ -12,7 +12,7 @@ namespace pim
 
 		PimNoop()
 		{
-			this->set_cycle_time(1);
+			this->set_cycle_time(6);
 		}
 	};
 }

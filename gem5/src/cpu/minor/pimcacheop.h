@@ -5,6 +5,7 @@
 #include <cassert>
 #include <cstdint>
 #include <functional>
+#include <string>
 #include <vector>
 
 #include "mem/cache/base.hh"
@@ -14,6 +15,8 @@
 #include "pimtlblookup.h"
 #include "pim_glue/pimsm.h"
 #include "pim_func_unit/adder.h"
+#include "pim_func_unit/multiplier.h"
+#include "pim_func_unit/sha1.hh"
 
 namespace pim
 {
@@ -42,9 +45,11 @@ namespace pim
 					case MCC_MUL:
 						added_time = 5;
 						break;
+					// SHA is 150 per 512 bits
 					case MCC_SHA:
-						added_time = 150;
+						added_time = 150 * 8;
 						break;
+					// AES is 10 cycles per 128, we have 512 bit lines
 					case MCC_AES_BC:
 						added_time = 40;
 						break;

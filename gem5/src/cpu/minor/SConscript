@@ -61,6 +61,8 @@ if 'MinorCPU' in env['CPU_MODELS']:
     Source('pimevent.cpp')
     Source('pimexec.cpp')
     Source('uopdecoder.cpp')
+    Source('pim_func_unit/sha1.cc')
+    Source('pim_func_unit/AES.cc')
 
 
     DebugFlag('MinorCPU', 'Minor CPU-level events')

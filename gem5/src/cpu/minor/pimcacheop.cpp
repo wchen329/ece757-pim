@@ -38,8 +38,11 @@ namespace pim
 		{
 			case MCC_SUB:
 				// Negate src2
-				std::for_each<VTypeItr, std::negate<int32_t>>(s2_32.begin(),
+				std::transform<VTypeItr, VTypeItr, std::negate<int32_t>>
+                                (
+							s2_32.begin(),
                                                          s2_32.end(),
+							s2_32.begin(),
                                                          std::negate<int32_t>()
                                 );// want fall through
 				adder(s1_32, s2_32);

@@ -9,8 +9,6 @@
 #include <cassert>
 #include <cstdint>
 
-#define CYCLE_TIME_MAX 999
-
 namespace pim
 {
 	class PimOpEx : public PimExecution
@@ -44,10 +42,11 @@ namespace pim
 						added_time = 40;
 						break;
 					default:
-						added_time += 1;
+						added_time = 1;
 				}
 
 				this->set_cycle_time(this->get_cycle_time() + added_time);
+
 			}
 
 		private:

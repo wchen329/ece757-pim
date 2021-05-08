@@ -354,7 +354,6 @@ Execute::handleMemResponse(MinorDynInstPtr inst,
             fault = inst->translationFault;
 
             fault->invoke(thread, inst->staticInst);
-	ptlb.register_mapping(response->request->getVaddr(), response->request->getPaddr());
         }
     } else if (!packet) {
         DPRINTF(MinorMem, "Completing failed request inst: %s\n",
@@ -381,9 +380,6 @@ Execute::handleMemResponse(MinorDynInstPtr inst,
         /* Complete the memory access instruction */
         fault = inst->staticInst->completeAcc(packet, &context,
             inst->traceData);
-
-	// Do a ninja store into metatlb!
-	ptlb.register_mapping(response->request->getVaddr(), response->request->getPaddr());
 
         if (fault != NoFault) {
             /* Invoke fault created by instruction completion */
@@ -480,6 +476,7 @@ Execute::executeMemRefInst(MinorDynInstPtr inst, BranchData &branch,
             if (init_fault != NoFault) {
                 assert(inst->translationFault != NoFault);
                 // Translation faults are dealt with in handleMemResponse()
+		init_fault = NoFault;
             } else {
                 // If we have a translation fault then it got suppressed  by
                 // initateAcc()
@@ -1216,13 +1213,6 @@ Execute::commit(ThreadID thread_id, bool only_commit_microops, bool discard,
 		else
 		{
                     handleMemResponse(inst, mem_response, branch, fault);
-                    if(mem_response->request->getVaddr() == psm.Src1() ||
-			mem_response->request->getVaddr() == psm.Src2() ||
-			mem_response->request->getVaddr() == psm.Dst())
-                    {
-		    ptlb.register_mapping(mem_response->request->getVaddr(),
-					  mem_response->request->getPaddr());
-                    }
                     committed_inst = true;
 	            completed_inst = true;
             	    completed_mem_ref = true;

@@ -1,6 +1,3 @@
-// Special Address: DON'T MOVE, DON'T CHANGE
-unsigned char pim_activate;
-
 #include "common.h"
 #include <algorithm>
 #include <cstdint>
@@ -29,6 +26,7 @@ int main()
 	std::fill_n<int*>(heap_alloc_2, 16, 1);
 	std::fill_n<int*>(heap_alloc_3, 16, 0);
 
+
 	int** halloc_1 = reinterpret_cast<int**>(ADDR_PIM_SRC1);
 	*halloc_1 = heap_alloc_1;
 
@@ -46,6 +44,7 @@ int main()
 
 	// Activate
 	fprintf(stdout, "PIM should of been activated by now...\n");
+
 	
 	return 0;
 }

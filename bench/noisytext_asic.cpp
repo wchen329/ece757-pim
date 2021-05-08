@@ -14,7 +14,7 @@ int main()
 	unsigned char* alloc_pt = new unsigned char[PAGE_SIZE + 1 + 64];
 	unsigned char* alloc_ctxt = new unsigned char[PAGE_SIZE + 1 + 64];
 	unsigned char* alloc_key = new unsigned char[32 + 64];
-	unsigned char* alloc_IV = new unsigned char[32 + 64];
+	unsigned char* alloc_IV = new unsigned char[16+ 64];
 	unsigned char* alloc_src2_buf = new unsigned char[128];
 
 	// ALigned arrays
@@ -35,8 +35,8 @@ int main()
 
 	for(int itr = 0; itr < 32; ++itr)
 		key[itr] = itr;
-	for(int itr = 31; itr >= 0; --itr)
-		IV[itr] = itr;
+	for(int itr = 16; itr >= 0; --itr)
+		IV[itr] = 16 - itr;
 
 	// Write the op first
 	uint64_t* op = reinterpret_cast<uint64_t*>(ADDR_PIM_MACROOP);
@@ -73,7 +73,7 @@ int main()
 		*go = 1;
 
 		// Set the initialization vector to the old output from this round (last 32)
-		std::copy<unsigned char*, unsigned char*>(cipher_text_temp + 32, cipher_text_temp  + 64, src2_buf + 32);
+		std::copy<unsigned char*, unsigned char*>(cipher_text_temp + 48, cipher_text_temp  + 64, src2_buf + 32);
 
 		// Encrypt more plain text
 		cipher_text_temp += 64;
@@ -81,16 +81,16 @@ int main()
 		
 	}
 
-	std::cout << "Ciphertext, first 4: \n" << std::endl;
-	for(size_t itr = 0; itr < 4; ++itr)
+	std::cout << "Ciphertext, first 2 blocks: \n" << std::endl;
+	for(size_t itr = 0; itr < 32; ++itr)
 	{
 		std::cout << cipher_text[itr] << "... ";
 	}
 
 	std::cout << std::endl;
 
-	std::cout << "Ciphertext, last 4: \n" << std::endl;
-	for(size_t itr = PAGE_SIZE - 4; itr < PAGE_SIZE; ++itr)
+	std::cout << "Ciphertext, last 2 blocks: \n" << std::endl;
+	for(size_t itr = PAGE_SIZE - 32; itr < PAGE_SIZE; ++itr)
 	{
 		std::cout << cipher_text[itr] << "... ";
 	}

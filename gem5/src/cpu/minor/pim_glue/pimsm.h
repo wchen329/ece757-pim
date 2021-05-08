@@ -16,6 +16,17 @@ namespace pim
 			uint64_t& Src1() { return src1_reg; }
 			uint64_t& Src2() { return src2_reg; }
 			uint64_t& Dst() { return dst_reg; }
+
+			// Reset state
+			PimSM() :
+				op_reg(0),
+				src1_reg(0),
+				src2_reg(0),
+				dst_reg(0)
+			{
+
+			}
+
 		private:
 			uint64_t op_reg;
 			uint64_t src1_reg;

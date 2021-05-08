@@ -75,9 +75,6 @@ namespace pim
 			case MCC_AES_BC:
 				unsigned num_bytes = 64;
 				unsigned& gcc_bytes = num_bytes;
-				adder(s1_32, s2_32);
-				dst_32 = s1_32;
-				std::copy<VTypeItr, int32_t*>(dst_32.begin(), dst_32.end(),
 				// Argument arrangement
 				// -
 				// Src1: 64 bytes of data to encrypt

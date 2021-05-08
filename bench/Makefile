@@ -7,7 +7,7 @@
 .cpp.bm:
 	g++ -g $< -o $@
 
-all: readalot.bm matmul.bm testpim.bm
+all: readalot.bm matmul.bm testpim.bm testpim_adv.bm
 
 clean:
 	rm *.bm

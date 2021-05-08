@@ -1,3 +1,5 @@
+#ifndef __ADDER_H__
+#define __ADDER_H__
 #include <iostream>
 #include <vector>
 #include <algorithm>
@@ -9,3 +11,4 @@ void adder(std::vector<T> &a, std::vector<T> &b)
 	return;
 }
 
+#endif

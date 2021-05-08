@@ -1,13 +1,19 @@
 #ifndef __PIMCACHEOP_H__
 #define __PIMCACHEOP_H__
+
+#include <algorithm>
+#include <cassert>
+#include <cstdint>
+#include <functional>
+#include <vector>
+
 #include "mem/cache/base.hh"
 #include "mop.h"
 #include "pimexec.h"
 #include "pimevent.h"
 #include "pimtlblookup.h"
 #include "pim_glue/pimsm.h"
-#include <cassert>
-#include <cstdint>
+#include "pim_func_unit/adder.h"
 
 namespace pim
 {
@@ -30,14 +36,15 @@ namespace pim
 					case MCC_ADD:
 						added_time = 1;
 						break;
-
+					case MCC_SUB:
+						added_time = 1;
+						break;
 					case MCC_MUL:
 						added_time = 5;
 						break;
 					case MCC_SHA:
 						added_time = 150;
 						break;
-						
 					case MCC_AES_BC:
 						added_time = 40;
 						break;

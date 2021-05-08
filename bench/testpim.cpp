@@ -11,7 +11,7 @@ int main()
 {
 
 	// Activate PIM (so to say)
-	fprintf(stdout, "Trying PIM...");
+	fprintf(stdout, "Trying PIM... (doing 1 + 1)\n");
 
 	// Data
 	int_Array ia(new int[16 + CACHE_LINE_SIZE]);
@@ -50,8 +50,23 @@ int main()
 
 
 	// Activate
-	fprintf(stdout, "PIM should of been activated by now...\n");
+	fprintf(stdout, "PIM should of been activated by now... testing...\n");
 
+	int error = 0;
+	for(size_t itr = 0; itr < 16; ++itr)
+	{
+		if(heap_alloc_3[itr] != 2)
+		{
+			fprintf(stdout, "itr: %d is not 2.\n", itr);
+			++error;
+		}
+	}
+
+	if(!error)
+	{
+		fprintf(stdout, "Vectorized addition test passed.\n");
+		fprintf(stdout, "heap_alloc_3[0] = %d\n", heap_alloc_3[0]);
+	}
 	
 	return 0;
 }

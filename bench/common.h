@@ -24,6 +24,7 @@ public:
 };
 
 typedef std::unique_ptr<int, std::default_delete<int[]>> int_Array;
+typedef std::unique_ptr<char, std::default_delete<char[]>> char_Array;
 
 template<class PtrType> PtrType findfirstaligned(PtrType input)
 {

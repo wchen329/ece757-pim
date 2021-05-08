@@ -3,11 +3,14 @@
 #
 
 .SUFFIXES: .cpp .bm
+OBJS=sha1.o
 
-.cpp.bm:
-	g++ -g $< -o $@
+.cpp.o:
+	g++ -c $<
+.cpp.bm: $(OBJS)
+	g++ -g $(OBJS) $< -o $@
 
-all: readalot.bm matmul.bm testpim.bm testpim_adv.bm
+all: $(OBJS) readalot.bm matmul.bm testpim.bm testpim_adv.bm hashpage_cpu.bm hashpage_asic.bm
 
 clean:
 	rm *.bm

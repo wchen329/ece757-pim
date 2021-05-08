@@ -1,158 +1,131 @@
-scons -j5 build/X86/gem5.opt CPU_MODELS=MinorCPU,AtomicSimpleCPU
-scons: Reading SConscript files ...
-Warning: Your compiler doesn't support incremental linking and lto at the same
-         time, so lto is being disabled. To force lto on anyway, use the
-         --force-lto option. That will disable partial linking.
-Warning: While checking protoc version: [Errno 2] No such file or directory:
-         'protoc': 'protoc'
-Info: Using Python config: python2.7-config
-Checking for C header file Python.h... (cached) yes
-Checking for C library python2.7... (cached) yes
-Checking for C library pthread... (cached) yes
-Checking for C library dl... (cached) yes
-Checking for C library util... (cached) yes
-Checking for C library m... (cached) yes
-Checking for accept(0,0,0) in C++ library None... (cached) yes
-Checking for zlibVersion() in C++ library z... (cached) yes
-Checking for C header file valgrind/valgrind.h... (cached) no
-Checking for clock_nanosleep(0,0,NULL,NULL) in C library None... (cached) yes
-Checking for timer_create(CLOCK_MONOTONIC, NULL, NULL) in C library None... (cached) no
-Checking for timer_create(CLOCK_MONOTONIC, NULL, NULL) in C library rt... (cached) yes
-Checking for C library tcmalloc... (cached) no
-Checking for C library tcmalloc_minimal... (cached) no
-Warning: You can get a 12% performance improvement by installing tcmalloc
-         (libgoogle-perftools-dev package on Ubuntu or RedHat).
-Checking for char temp; backtrace_symbols_fd((void*)&temp, 0, 0) in C library None... (cached) yes
-Checking for C header file fenv.h... (cached) yes
-Checking for C header file png.h... (cached) no
-Warning: Header file <png.h> not found.
-         This host has no libpng library.
-         Disabling support for PNG framebuffers.
-Checking for C header file linux/kvm.h... (cached) yes
-Checking for C header file linux/if_tun.h... (cached) yes
-Checking size of struct kvm_xsave ... (cached) yes
-Checking for member exclude_host in struct perf_event_attr...(cached) yes
-Checking for hdf5-serial using pkg-config...Package hdf5-serial was not found in the pkg-config search path.
-Perhaps you should add the directory containing `hdf5-serial.pc'
-to the PKG_CONFIG_PATH environment variable
-No package 'hdf5-serial' found
- no
-Checking for hdf5 using pkg-config...Package hdf5 was not found in the pkg-config search path.
-Perhaps you should add the directory containing `hdf5.pc'
-to the PKG_CONFIG_PATH environment variable
-No package 'hdf5' found
- no
-Checking for H5Fcreate("", 0, 0, 0) in C library hdf5... (cached) yes
-Checking for H5::H5File("", 0) in C++ library hdf5_cpp... (cached) yes
-Checking whether __i386__ is declared... (cached) no
-Checking whether __x86_64__ is declared... (cached) yes
-Building in /home/wchen/ece757-pim/gem5/build/X86
-Using saved variables file /home/wchen/ece757-pim/gem5/build/variables/X86
+build/X86/gem5.opt configs/example/se.py --cmd=../bench/hashpage_asic.bm --cpu-type=MinorCPU --l1d_size=16384 --l1i_size=16384 --l2_size=1048576 --caches --l2cache --cacheline_size=64
 warn: CheckedInt already exists in allParams. This may be caused by the Python 2.7 compatibility layer.
 warn: Enum already exists in allParams. This may be caused by the Python 2.7 compatibility layer.
 warn: ScopedEnum already exists in allParams. This may be caused by the Python 2.7 compatibility layer.
-scons: done reading SConscript files.
-scons: Building targets ...
- [     CXX] X86/mem/ruby/protocol/DMA_Controller.cc -> .o
- [     CXX] X86/mem/ruby/protocol/DMA_Wakeup.cc -> .o
- [     CXX] X86/mem/ruby/protocol/Directory_Controller.cc -> .o
- [     CXX] X86/mem/ruby/protocol/Directory_Wakeup.cc -> .o
- [     CXX] X86/mem/ruby/protocol/L1Cache_Controller.cc -> .o
- [     CXX] X86/mem/ruby/protocol/L1Cache_Wakeup.cc -> .o
- [     CXX] X86/cpu/minor/cpu.cc -> .o
- [     CXX] X86/cpu/minor/decode.cc -> .o
- [     CXX] X86/cpu/minor/execute.cc -> .o
- [     CXX] X86/cpu/minor/fetch1.cc -> .o
-In file included from build/X86/cpu/minor/pimcacheop.h:16:0,
-                 from build/X86/cpu/minor/execute.hh:56,
-                 from build/X86/cpu/minor/pipeline.hh:51,
-                 from build/X86/cpu/minor/cpu.cc:43:
-build/X86/cpu/minor/pim_glue/pimsm.h: In member function 'uint64_t& pim::PimSM::op()':
-build/X86/cpu/minor/pim_glue/pimsm.h:16:28: error: 'op_reg' was not declared in this scope
-    uint64_t& op() { return op_reg; }
-                            ^~~~~~
-build/X86/cpu/minor/pim_glue/pimsm.h:16:28: note: suggested alternative: 'dst_reg'
-    uint64_t& op() { return op_reg; }
-                            ^~~~~~
-                            dst_reg
-build/X86/cpu/minor/pim_glue/pimsm.h: In constructor 'pim::PimSM::PimSM()':
-build/X86/cpu/minor/pim_glue/pimsm.h:52:5: error: class 'pim::PimSM' does not have any field named 'op_reg'
-     op_reg(0),
-     ^~~~~~
-build/X86/cpu/minor/pim_glue/pimsm.h:56:4: error: expected identifier before '{' token
-    {
-    ^
-In file included from build/X86/cpu/minor/pimcacheop.h:16:0,
-                 from build/X86/cpu/minor/execute.hh:56,
-                 from build/X86/cpu/minor/pipeline.hh:51,
-                 from build/X86/cpu/minor/decode.cc:40:
-build/X86/cpu/minor/pim_glue/pimsm.h: In member function 'uint64_t& pim::PimSM::op()':
-build/X86/cpu/minor/pim_glue/pimsm.h:16:28: error: 'op_reg' was not declared in this scope
-    uint64_t& op() { return op_reg; }
-                            ^~~~~~
-build/X86/cpu/minor/pim_glue/pimsm.h:16:28: note: suggested alternative: 'dst_reg'
-    uint64_t& op() { return op_reg; }
-                            ^~~~~~
-                            dst_reg
-build/X86/cpu/minor/pim_glue/pimsm.h: In constructor 'pim::PimSM::PimSM()':
-build/X86/cpu/minor/pim_glue/pimsm.h:52:5: error: class 'pim::PimSM' does not have any field named 'op_reg'
-     op_reg(0),
-     ^~~~~~
-build/X86/cpu/minor/pim_glue/pimsm.h:56:4: error: expected identifier before '{' token
-    {
-    ^
-In file included from build/X86/cpu/minor/pimcacheop.h:16:0,
-                 from build/X86/cpu/minor/execute.hh:56,
-                 from build/X86/cpu/minor/pipeline.hh:51,
-                 from build/X86/cpu/minor/fetch1.cc:45:
-build/X86/cpu/minor/pim_glue/pimsm.h: In member function 'uint64_t& pim::PimSM::op()':
-build/X86/cpu/minor/pim_glue/pimsm.h:16:28: error: 'op_reg' was not declared in this scope
-    uint64_t& op() { return op_reg; }
-                            ^~~~~~
-build/X86/cpu/minor/pim_glue/pimsm.h:16:28: note: suggested alternative: 'dst_reg'
-    uint64_t& op() { return op_reg; }
-                            ^~~~~~
-                            dst_reg
-build/X86/cpu/minor/pim_glue/pimsm.h: In constructor 'pim::PimSM::PimSM()':
-build/X86/cpu/minor/pim_glue/pimsm.h:52:5: error: class 'pim::PimSM' does not have any field named 'op_reg'
-     op_reg(0),
-     ^~~~~~
-build/X86/cpu/minor/pim_glue/pimsm.h:56:4: error: expected identifier before '{' token
-    {
-    ^
-In file included from build/X86/cpu/minor/pimcacheop.h:16:0,
-                 from build/X86/cpu/minor/execute.hh:56,
-                 from build/X86/cpu/minor/execute.cc:38:
-build/X86/cpu/minor/pim_glue/pimsm.h: In member function 'uint64_t& pim::PimSM::op()':
-build/X86/cpu/minor/pim_glue/pimsm.h:16:28: error: 'op_reg' was not declared in this scope
-    uint64_t& op() { return op_reg; }
-                            ^~~~~~
-build/X86/cpu/minor/pim_glue/pimsm.h:16:28: note: suggested alternative: 'dst_reg'
-    uint64_t& op() { return op_reg; }
-                            ^~~~~~
-                            dst_reg
-build/X86/cpu/minor/pim_glue/pimsm.h: In constructor 'pim::PimSM::PimSM()':
-build/X86/cpu/minor/pim_glue/pimsm.h:52:5: error: class 'pim::PimSM' does not have any field named 'op_reg'
-     op_reg(0),
-     ^~~~~~
-build/X86/cpu/minor/pim_glue/pimsm.h:56:4: error: expected identifier before '{' token
-    {
-    ^
- [    LINK]  -> X86/mem/ruby/protocol/lib.o.partial
-scons: *** [build/X86/cpu/minor/cpu.o] Error 1
-scons: *** [build/X86/cpu/minor/decode.o] Error 1
-scons: *** [build/X86/cpu/minor/fetch1.o] Error 1
-scons: *** [build/X86/cpu/minor/execute.o] Error 1
-scons: building terminated because of errors.
-*** Summary of Warnings ***
-Warning: Your compiler doesn't support incremental linking and lto at the same
-         time, so lto is being disabled. To force lto on anyway, use the
-         --force-lto option. That will disable partial linking.
-Warning: While checking protoc version: [Errno 2] No such file or directory:
-         'protoc': 'protoc'
-Warning: You can get a 12% performance improvement by installing tcmalloc
-         (libgoogle-perftools-dev package on Ubuntu or RedHat).
-Warning: Header file <png.h> not found.
-         This host has no libpng library.
-         Disabling support for PNG framebuffers.
-make: *** [Makefile:10: opt] Error 2
+gem5 Simulator System.  http://gem5.org
+gem5 is copyrighted software; use the --copyright option for details.
+
+gem5 version 20.0.0.3
+gem5 compiled May  8 2021 01:36:53
+gem5 started May  8 2021 01:47:05
+gem5 executing on Chenserver-Unix, pid 13394
+command line: build/X86/gem5.opt configs/example/se.py --cmd=../bench/hashpage_asic.bm --cpu-type=MinorCPU --l1d_size=16384 --l1i_size=16384 --l2_size=1048576 --caches --l2cache --cacheline_size=64
+
+Global frequency set at 1000000000000 ticks per second
+warn: No dot file generated. Please install pydot to generate the dot file and pdf.
+warn: DRAM device capacity (8192 Mbytes) does not match the address range assigned (512 Mbytes)
+0: system.remote_gdb: listening for remote gdb on port 7000
+**** REAL SIMULATION ****
+info: Entering event queue @ 0.  Starting simulation...
+warn: ignoring syscall access(...)
+warn: ignoring syscall mprotect(...)
+warn: ignoring syscall mprotect(...)
+warn: ignoring syscall mprotect(...)
+warn: ignoring syscall mprotect(...)
+warn: ignoring syscall mprotect(...)
+warn: ignoring syscall mprotect(...)
+warn: ignoring syscall mprotect(...)
+warn: ignoring syscall mprotect(...)
+warn: ignoring syscall mprotect(...)
+warn: ignoring syscall mprotect(...)
+PIM should of been activated by now... testing...
+271e55bba269ffa0c81b9acefa985ec756ce4d17
+[PIM] performed update on register: value = 61bec0
+[PIM] performed update on register: value = 4
+[PIM] performed update on register: value = 61ae80
+[PIM] performed update on register: value = 61aec0
+[PIM] noop completed.
+[PIM] performed update on register: value = 61af00
+[PIM] performed update on register: value = 61af40
+[PIM] noop completed.
+[PIM] performed update on register: value = 61af80
+[PIM] performed update on register: value = 61afc0
+[PIM] noop completed.
+[PIM] performed update on register: value = 61b000
+[PIM] performed update on register: value = 61b040
+[PIM] noop completed.
+[PIM] performed update on register: value = 61b080
+[PIM] performed update on register: value = 61b0c0
+[PIM] noop completed.
+[PIM] performed update on register: value = 61b100
+[PIM] performed update on register: value = 61b140
+[PIM] noop completed.
+[PIM] performed update on register: value = 61b180
+[PIM] performed update on register: value = 61b1c0
+[PIM] noop completed.
+[PIM] performed update on register: value = 61b200
+[PIM] performed update on register: value = 61b240
+[PIM] noop completed.
+[PIM] performed update on register: value = 61b280
+[PIM] performed update on register: value = 61b2c0
+[PIM] noop completed.
+[PIM] performed update on register: value = 61b300
+[PIM] performed update on register: value = 61b340
+[PIM] noop completed.
+[PIM] performed update on register: value = 61b380
+[PIM] performed update on register: value = 61b3c0
+[PIM] noop completed.
+[PIM] performed update on register: value = 61b400
+[PIM] performed update on register: value = 61b440
+[PIM] noop completed.
+[PIM] performed update on register: value = 61b480
+[PIM] performed update on register: value = 61b4c0
+[PIM] noop completed.
+[PIM] performed update on register: value = 61b500
+[PIM] performed update on register: value = 61b540
+[PIM] noop completed.
+[PIM] performed update on register: value = 61b580
+[PIM] performed update on register: value = 61b5c0
+[PIM] noop completed.
+[PIM] performed update on register: value = 61b600
+[PIM] performed update on register: value = 61b640
+[PIM] noop completed.
+[PIM] performed update on register: value = 61b680
+[PIM] performed update on register: value = 61b6c0
+[PIM] noop completed.
+[PIM] performed update on register: value = 61b700
+[PIM] performed update on register: value = 61b740
+[PIM] noop completed.
+[PIM] performed update on register: value = 61b780
+[PIM] performed update on register: value = 61b7c0
+[PIM] noop completed.
+[PIM] performed update on register: value = 61b800
+[PIM] performed update on register: value = 61b840
+[PIM] noop completed.
+[PIM] performed update on register: value = 61b880
+[PIM] performed update on register: value = 61b8c0
+[PIM] noop completed.
+[PIM] performed update on register: value = 61b900
+[PIM] performed update on register: value = 61b940
+[PIM] noop completed.
+[PIM] performed update on register: value = 61b980
+[PIM] performed update on register: value = 61b9c0
+[PIM] noop completed.
+[PIM] performed update on register: value = 61ba00
+[PIM] performed update on register: value = 61ba40
+[PIM] noop completed.
+[PIM] performed update on register: value = 61ba80
+[PIM] performed update on register: value = 61bac0
+[PIM] noop completed.
+[PIM] performed update on register: value = 61bb00
+[PIM] performed update on register: value = 61bb40
+[PIM] noop completed.
+[PIM] performed update on register: value = 61bb80
+[PIM] performed update on register: value = 61bbc0
+[PIM] noop completed.
+[PIM] performed update on register: value = 61bc00
+[PIM] performed update on register: value = 61bc40
+[PIM] noop completed.
+[PIM] performed update on register: value = 61bc80
+[PIM] performed update on register: value = 61bcc0
+[PIM] noop completed.
+[PIM] performed update on register: value = 61bd00
+[PIM] performed update on register: value = 61bd40
+[PIM] noop completed.
+[PIM] performed update on register: value = 61bd80
+[PIM] performed update on register: value = 61bdc0
+[PIM] noop completed.
+[PIM] performed update on register: value = 61be00
+[PIM] performed update on register: value = 61be40
+[PIM] noop completed.
+Exiting @ tick 3781592500 because exiting with last active thread context

@@ -32,7 +32,7 @@ namespace pim
 				CacheBlk* src1 = bc->tags->findBlock(mtlb.lookup_paddr(src1_reg), false);
 
 				// Find the source 2 block
-				CacheBlk* src2 = bc->tags->findBlock(mtlb.lookup_paddr(src1_reg), false);
+				CacheBlk* src2 = bc->tags->findBlock(mtlb.lookup_paddr(src2_reg), false);
 
 				// Make sure our cache blocks are valid.
 				assert(src1 != nullptr && src2 != nullptr);

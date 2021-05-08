@@ -1180,8 +1180,7 @@ Execute::commit(ThreadID thread_id, bool only_commit_microops, bool discard,
 				mmio_addr = true;
 				break;
 			case ADDR_PIM_SHA_COMMIT:
-				nextevent = pim::m_PimEvent(new pim::PimNoop);
-				psm.push_data(ptlb, cpu_cache);
+				nextevent = pim::m_PimEvent(new pim::PimShaCommit(psm, cpu_cache, ptlb));
 				mmio_addr = true;
 				break;
 	    	    }

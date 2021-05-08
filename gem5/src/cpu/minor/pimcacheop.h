@@ -72,6 +72,33 @@ namespace pim
 			// Reference to MetaTLB
 			MetaTLB& mtlb;
 	};
+
+	class PimShaCommit: public PimExecution
+	{
+		public:
+			virtual void execute()
+			{
+				state.push_data(mtlb, bc);
+			}
+
+			PimShaCommit(PimSM& state_in, BaseCache* cin, MetaTLB& mtlb_in) :
+				state(state_in),
+				bc(cin),
+				mtlb(mtlb_in)
+			{
+			}
+
+		private:
+
+			// Execution state (copy to preserve)
+			PimSM& state;
+
+			// Cache to execute on.
+			BaseCache* bc;
+
+			// Reference to MetaTLB
+			MetaTLB& mtlb;
+	};
 }
 
 #endif

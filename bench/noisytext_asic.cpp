@@ -64,9 +64,9 @@ int main()
 		*dst = cipher_text_temp;
 
 		// Page in
-		volatile char touch = *src2_buf;
-		volatile char touch_2 = *src1_temp;
-		volatile char touch_3 = *cipher_text_temp;
+		volatile unsigned char touch = *src2_buf;
+		volatile unsigned char touch_2 = *src1_temp;
+		volatile unsigned char touch_3 = *cipher_text_temp;
 
 		// Do the encryptin
 		uint64_t* go = reinterpret_cast<uint64_t*>(ADDR_PIM_EXECUTE);
@@ -82,7 +82,7 @@ int main()
 	}
 
 	std::cout << "Ciphertext, first 4: \n" << std::endl;
-	for(size_t itr = 0; itr < PAGE_SIZE; ++itr)
+	for(size_t itr = 0; itr < 4; ++itr)
 	{
 		std::cout << cipher_text[itr] << "... ";
 	}

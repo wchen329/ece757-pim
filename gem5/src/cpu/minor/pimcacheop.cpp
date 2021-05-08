@@ -91,6 +91,9 @@ namespace pim
 		}
 
 		// Finish it off by writing back to the destination line
+
+		// Set dst as dirty
+		dst->status |= BlkDirty;
 	}
 }
 

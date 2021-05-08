@@ -75,11 +75,19 @@ namespace pim
 			case MCC_AES_BC:
 				unsigned num_bytes = 64;
 				unsigned& gcc_bytes = num_bytes;
+				adder(s1_32, s2_32);
+				dst_32 = s1_32;
+				std::copy<VTypeItr, int32_t*>(dst_32.begin(), dst_32.end(),
+				// Argument arrangement
+				// -
+				// Src1: 64 bytes of data to encrypt
+				// Src2: lower 32 bytes: key, upper 32 bytes: IV
+				// Dst: full CBC of all 64 bytes of Src1 with IV and key as specified
 				ctext = state.aes_instance().EncryptCBC(src1->data, gcc_bytes, src2->data, src2->data + num_bytes/2, gcc_bytes);
 				// Copy cipher text back
 				for(size_t itr = 0; itr < num_bytes; ++itr)
 				{
-					dst->data[itr] = output_buf[itr];
+					dst->data[itr] = ctext[itr];
 				}
 				delete[] ctext;
 				break;
